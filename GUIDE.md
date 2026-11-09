@@ -22,6 +22,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | Wear and sync indicators | Follow the README literally: every day cell shows both, including `FUTURE`, `NO_ACTIVITY` and `WAITING_TO_SYNC` days |
 | How the frontend knows "today" | From its own environment variable carrying the same `AS_OF` date. The API response stays exactly as the contract shows it |
 | `AS_OF` set but not a valid date | The server refuses to start |
+| The frontend's date is not a valid date | The page shows an error screen |
 | `AS_OF` not provided | Default to `2026-10-21`, the seed reference date, on both the server and the frontend |
 
 Two consequences of the "today" decision to keep in mind. Vite only exposes variables
@@ -72,32 +73,26 @@ answer in `NOTES.md`.
 
 1. **Server port.** The README says a script will run against your server and does not say
    which port. Pick one, make it configurable, and document it. (Step 6)
-2. **A malformed "today" on the frontend.** You decided that the server refuses to start
-   when `AS_OF` is set but is not a valid date. The frontend has no equivalent of refusing
-   to start: its variable is read in the browser, or fixed at build time. What the page
-   does with a bad value (an error screen, or a failed build) is not yet decided. If both
-   processes are started by `make dev` from one value, the server's refusal already stops
-   the command, which may be enough. (Step 9)
-3. **The `wear` and `sync` values on `FUTURE` days.** The contract does not say. The seed has
+2. **The `wear` and `sync` values on `FUTURE` days.** The contract does not say. The seed has
    no future records, so with this data they come out as zero and `false`; what you would do
    if a future record did exist is unspecified. (Step 4)
-4. **`month` missing altogether.** "Anything else returns `400`" most naturally covers a
+3. **`month` missing altogether.** "Anything else returns `400`" most naturally covers a
    missing parameter, but the spec does not name that case. (Step 5)
-5. **How strict `month` is.** `2026-13`, `2026-1` and `26-10` are all "anything else".
+4. **How strict `month` is.** `2026-13`, `2026-1` and `26-10` are all "anything else".
    Whether a year far in the past or future is acceptable is not stated. (Step 5)
-6. **The shape of the error body.** The spec asks for a "consistent JSON error body" and
+5. **The shape of the error body.** The spec asks for a "consistent JSON error body" and
    does not define one. (Step 5)
-7. **What "empty state" means.** The spec lists loading, empty and error states. The API
+6. **What "empty state" means.** The spec lists loading, empty and error states. The API
    always returns a full grid, so there is never an empty list. A participant with no
    records, or a month where every day is `NO_ACTIVITY`, is the nearest thing. (Step 12)
-8. **A month after today in the URL.** Next is disabled once the displayed month contains
+7. **A month after today in the URL.** Next is disabled once the displayed month contains
    today, but someone can still type a later month into the address bar. The spec does not
    say what the page does then. (Step 10)
-9. **The default month.** When the URL names no month, which one shows? The month containing
+8. **The default month.** When the URL names no month, which one shows? The month containing
    today is the obvious candidate; the spec does not say. (Step 10)
-10. **Today outside the selected month.** If today falls in the leading or trailing days of
+9. **Today outside the selected month.** If today falls in the leading or trailing days of
     the grid, is it still marked? (Step 11)
-11. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
+10. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
     residue, not part of the spec. Whether you remove it is up to you.
 
 ## Part 1: Backend
@@ -178,7 +173,7 @@ Reading from disk and embedding the files in the binary are both allowed. Embedd
 removes any dependence on the working directory the server is started from, which matters
 when someone else's script starts it.
 
-Decide open question 3 here. Then write the function that joins the three pieces: for a
+Decide open question 2 here. Then write the function that joins the three pieces: for a
 participant and a month, produce the grid from step 3, look up each date, and apply the
 functions from step 2.
 
@@ -202,7 +197,7 @@ Things to get right:
 - Set the JSON content type on every response, errors included.
 - Validate in a deliberate order and decide what happens when two things are wrong at once
   (an unknown participant and a bad month).
-- Resolve open questions 4, 5 and 6. Write one helper that produces the error body so that
+- Resolve open questions 3, 4 and 5. Write one helper that produces the error body so that
   every failure uses it.
 - Consider what a request with the wrong method, or to a path that matches nothing,
   returns. The default responses from the standard router are plain text, not your JSON
@@ -266,10 +261,15 @@ server error).
 Accept an `AbortSignal` in this function now. Step 12 needs it.
 
 **Decided:** "today" comes from an environment variable on the frontend. Read it in one
-place and validate that it looks like a date; open question 2 covers what happens when it
-does not. When it is not provided, fall back to
+place and validate it with the same strictness as the server. When it is not provided, fall back to
 `2026-10-21`, the same default as the server; a different default on each side
 reintroduces the drift described under "Decisions already made".
+
+**Decided:** when the frontend's date is set but is not a valid date, the page shows an
+error screen instead of the calendar. Do the check once, above the router, so that no
+route renders with a bad "today". The message should say what is wrong and name the
+variable, since the person seeing it is whoever started the app. This is a configuration
+error, so keep it distinct from the request errors in step 12.
 
 ### Step 10 — Routing and the month in the URL
 
@@ -281,7 +281,7 @@ and the month from the query string on every render, and change month by navigat
 you also keep the month in component state, the two will disagree after a refresh or a
 back-button press.
 
-Resolve open questions 8 and 9. Also decide what the page does when the month in the URL is
+Resolve open questions 7 and 8. Also decide what the page does when the month in the URL is
 not a valid month: the server will answer `400`, and you can catch it earlier on the
 client.
 
@@ -306,7 +306,7 @@ Useful to know:
   midnight and then displays it in the local zone, which shows the previous day in any zone
   west of UTC. Take the day number from the string instead. The same care applies when you
   work out the month name for the heading and the previous and next months.
-- Today is the cell whose date equals the value from step 9. Resolve open question 10.
+- Today is the cell whose date equals the value from step 9. Resolve open question 9.
 
 **Decided:** every cell shows both indicators, including `FUTURE`, `NO_ACTIVITY` and
 `WAITING_TO_SYNC` days. This differs from the wireframe, which the README says is
@@ -347,7 +347,7 @@ another, click through quickly, and watch what settles. Remove the delay afterwa
 Also decide what shows while a new month loads: the previous grid dimmed, a skeleton, or a
 blank area. Whichever you choose, the month heading should already name the new month.
 
-Resolve open question 7.
+Resolve open question 6.
 
 ### Step 13 — Navigation and accessibility
 
