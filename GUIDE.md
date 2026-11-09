@@ -25,7 +25,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | `wear` and `sync` on `FUTURE` days | Hours `0` and count `0` |
 | `month` parameter missing | `400` |
 | Error body | `{"error": "message"}`: one `error` field holding a readable message |
-| Empty state | A participant with no records |
+| Empty state | A participant with no records, detected on the frontend as a grid with no activity. No change to the API |
 | `month` format | Exactly `YYYY-MM`: four digits, a hyphen, two digits from `01` to `12`. Anything else returns `400` |
 | `AS_OF` set but not a valid date | The server refuses to start |
 | The frontend's date is not a valid date | The page shows an error screen |
@@ -77,18 +77,14 @@ a year boundary (`2026-11-29` to `2027-01-02`).
 None of these block starting. Decide each when you reach the step named, and write the
 answer in `NOTES.md`.
 
-1. **How the frontend detects the empty state.** You decided the empty state is a
-   participant with no records (`A1000`, `A1005` and `A1013` in the seed). The contract
-   response covers one month's grid and has nothing that says whether the participant has
-   records in other months. `A1001` in `2026-08` and `A1000` in `2026-10` look alike from
-   the frontend: no day with any wear or sync. So the page can only tell "no records in the
-   displayed grid" unless the server says more. The choices are to treat a grid with no
-   activity as the empty state, or to have the server report it, which means an addition
-   to the contract response or a second endpoint. Also undecided: whether the empty state
-   replaces the grid or appears alongside it. (Step 12)
+1. **How the empty state is presented.** You decided the page treats a grid with no
+   activity as the empty state. Whether its message replaces the grid or appears alongside
+   it is not decided. Showing the grid as well keeps the month navigation in view and
+   keeps the README's requirement that each day cell is shown. (Step 12)
 2. **A month after today in the URL.** Next is disabled once the displayed month contains
    today, but someone can still type a later month into the address bar. The spec does not
-   say what the page does then. (Step 10)
+   say what the page does then. A grid that is entirely `FUTURE` also has no activity, so
+   decide whether the empty state applies to it. (Step 10)
 3. **The default month.** When the URL names no month, which one shows? The month containing
    today is the obvious candidate; the spec does not say. (Step 10)
 4. **Today outside the selected month.** If today falls in the leading or trailing days of
@@ -373,9 +369,21 @@ another, click through quickly, and watch what settles. Remove the delay afterwa
 Also decide what shows while a new month loads: the previous grid dimmed, a skeleton, or a
 blank area. Whichever you choose, the month heading should already name the new month.
 
-**Decided:** the empty state is a participant with no records. Resolve open question 1,
-which covers how the page finds that out, before you build it. Use `A1000` to see it and
-`A1001` in `2026-08` to see the case it must be told apart from.
+**Decided:** the empty state is a participant with no records, and the page detects it as
+a grid with no activity: no day in the response has wear hours or a sync count above
+zero. The API is unchanged. Three things to settle as you build it:
+
+- Test the numbers, or test that every state is `NO_ACTIVITY` or `FUTURE`. With the rules
+  as written the two agree; pick one and put it in a small pure function with its own
+  tests.
+- The check covers the whole grid, including the days outside the selected month. `A1001`
+  in `2026-09` has activity only from `09-28`, and its grid is not empty.
+- The message cannot honestly say the participant has no records at all, because `A1001`
+  in `2026-08` triggers it too. Word it about the period shown, and record the limitation
+  in `NOTES.md`.
+
+Check with `A1000` in `2026-10` and `A1001` in `2026-08` (both empty), and `A1001` in
+`2026-10` (not empty). Resolve open question 1.
 
 ### Step 13 — Navigation and accessibility
 
