@@ -26,6 +26,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | `month` parameter missing | `400` |
 | Error body | `{"error": "message"}`: one `error` field holding a readable message |
 | Empty state | A participant with no records, detected on the frontend as a grid with no activity. Its message appears alongside the grid. No change to the API |
+| A month after today in the page URL | The page redirects to the month containing today |
 | `month` format | Exactly `YYYY-MM`: four digits, a hyphen, two digits from `01` to `12`. Anything else returns `400` |
 | `AS_OF` set but not a valid date | The server refuses to start |
 | The frontend's date is not a valid date | The page shows an error screen |
@@ -77,15 +78,11 @@ a year boundary (`2026-11-29` to `2027-01-02`).
 None of these block starting. Decide each when you reach the step named, and write the
 answer in `NOTES.md`.
 
-1. **A month after today in the URL.** Next is disabled once the displayed month contains
-   today, but someone can still type a later month into the address bar. The spec does not
-   say what the page does then. A grid that is entirely `FUTURE` also has no activity, so
-   decide whether the empty state applies to it. (Step 10)
-2. **The default month.** When the URL names no month, which one shows? The month containing
+1. **The default month.** When the URL names no month, which one shows? The month containing
    today is the obvious candidate; the spec does not say. (Step 10)
-3. **Today outside the selected month.** If today falls in the leading or trailing days of
+2. **Today outside the selected month.** If today falls in the leading or trailing days of
     the grid, is it still marked? (Step 11)
-4. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
+3. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
     residue, not part of the spec. Whether you remove it is up to you.
 
 ## Part 1: Backend
@@ -299,7 +296,21 @@ and the month from the query string on every render, and change month by navigat
 you also keep the month in component state, the two will disagree after a refresh or a
 back-button press.
 
-Resolve open questions 1 and 2. Also decide what the page does when the month in the URL is
+**Decided:** when the month in the page URL is after the month containing today, the page
+redirects to the month containing today. Points to get right:
+
+- Compare months, not dates. Both are `YYYY-MM` strings of fixed width, so a plain string
+  comparison orders them correctly.
+- Replace the history entry instead of adding one. If the redirect pushes a new entry, the
+  back button returns to the future month and is redirected forward again.
+- Do it before fetching, so no request goes out for the month being left.
+- This is a rule of the page. The API was not part of this decision: a request to the
+  server for a future month is still valid under the contract and returns a grid of
+  `FUTURE` days.
+- A grid that is entirely `FUTURE` can therefore never be displayed, which settles whether
+  the empty state in step 12 applies to one.
+
+Resolve open question 1. Also decide what the page does when the month in the URL is
 not a valid month: the server will answer `400`, and you can catch it earlier on the
 client.
 
@@ -324,7 +335,7 @@ Useful to know:
   midnight and then displays it in the local zone, which shows the previous day in any zone
   west of UTC. Take the day number from the string instead. The same care applies when you
   work out the month name for the heading and the previous and next months.
-- Today is the cell whose date equals the value from step 9. Resolve open question 3.
+- Today is the cell whose date equals the value from step 9. Resolve open question 2.
 
 **Decided:** every cell shows both indicators, including `FUTURE`, `NO_ACTIVITY` and
 `WAITING_TO_SYNC` days. This differs from the wireframe, which the README says is
