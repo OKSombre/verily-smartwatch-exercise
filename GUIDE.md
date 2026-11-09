@@ -21,6 +21,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | Study segment of the URL | A path parameter. Only `alpha` exists; any other study returns `404` |
 | Wear and sync indicators | Follow the README literally: every day cell shows both, including `FUTURE`, `NO_ACTIVITY` and `WAITING_TO_SYNC` days |
 | How the frontend knows "today" | From its own environment variable carrying the same `AS_OF` date. The API response stays exactly as the contract shows it |
+| `AS_OF` set but not a valid date | The server refuses to start |
 | `AS_OF` not provided | Default to `2026-10-21`, the seed reference date, on both the server and the frontend |
 
 Two consequences of the "today" decision to keep in mind. Vite only exposes variables
@@ -71,10 +72,12 @@ answer in `NOTES.md`.
 
 1. **Server port.** The README says a script will run against your server and does not say
    which port. Pick one, make it configurable, and document it. (Step 6)
-2. **A malformed `AS_OF`.** You decided that an absent variable defaults to `2026-10-21`.
-   A value that is present but not a valid date is a different case: using the default
-   silently would hide a typo, and refusing to start would surface it. This applies to the
-   frontend's variable as well. (Steps 6 and 9)
+2. **A malformed "today" on the frontend.** You decided that the server refuses to start
+   when `AS_OF` is set but is not a valid date. The frontend has no equivalent of refusing
+   to start: its variable is read in the browser, or fixed at build time. What the page
+   does with a bad value (an error screen, or a failed build) is not yet decided. If both
+   processes are started by `make dev` from one value, the server's refusal already stops
+   the command, which may be enough. (Step 9)
 3. **The `wear` and `sync` values on `FUTURE` days.** The contract does not say. The seed has
    no future records, so with this data they come out as zero and `false`; what you would do
    if a future record did exist is unspecified. (Step 4)
@@ -218,7 +221,13 @@ makes the tests in the next step possible.
 to start. Define that default in one place, and log the date in use at startup so that anyone
 running the server can see which "today" it has.
 
-Resolve open questions 1 and 2.
+**Decided:** when `AS_OF` is set but is not a valid `YYYY-MM-DD` date, the server refuses
+to start. Exit with a non-zero status and a message that names the variable and shows the
+rejected value. A date that has the right shape but does not exist, such as `2026-02-30`,
+is invalid too, so check that your parsing rejects it. Keep the parsing in a function you
+can unit test for the three cases: absent, valid and invalid.
+
+Resolve open question 1.
 
 Check with the server running: request the contract URL and compare the first day with the
 example in the README (`2026-09-27`, `NO_ACTIVITY`, zeros and `false`). Then try a bad
@@ -257,7 +266,8 @@ server error).
 Accept an `AbortSignal` in this function now. Step 12 needs it.
 
 **Decided:** "today" comes from an environment variable on the frontend. Read it in one
-place and validate that it looks like a date. When it is not provided, fall back to
+place and validate that it looks like a date; open question 2 covers what happens when it
+does not. When it is not provided, fall back to
 `2026-10-21`, the same default as the server; a different default on each side
 reintroduces the drift described under "Decisions already made".
 
