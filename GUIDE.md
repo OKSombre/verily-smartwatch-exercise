@@ -26,6 +26,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | `month` parameter missing | `400` |
 | Error body | `{"error": "message"}`: one `error` field holding a readable message |
 | Empty state | A participant with no records, detected on the frontend as a grid with no activity. Its message appears alongside the grid. No change to the API |
+| Today outside the selected month | Still marked as today |
 | No month in the page URL | The page shows the month containing today |
 | A month after today in the page URL | The page redirects to the month containing today |
 | `month` format | Exactly `YYYY-MM`: four digits, a hyphen, two digits from `01` to `12`. Anything else returns `400` |
@@ -76,12 +77,9 @@ a year boundary (`2026-11-29` to `2027-01-02`).
 
 ## Open questions for you
 
-None of these block starting. Decide each when you reach the step named, and write the
-answer in `NOTES.md`.
+One item is left. It does not block starting.
 
-1. **Today outside the selected month.** If today falls in the leading or trailing days of
-    the grid, is it still marked? (Step 11)
-2. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
+1. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
     residue, not part of the spec. Whether you remove it is up to you.
 
 ## Part 1: Backend
@@ -341,7 +339,12 @@ Useful to know:
   midnight and then displays it in the local zone, which shows the previous day in any zone
   west of UTC. Take the day number from the string instead. The same care applies when you
   work out the month name for the heading and the previous and next months.
-- Today is the cell whose date equals the value from step 9. Resolve open question 1.
+- Today is the cell whose date equals the value from step 9.
+- **Decided:** today is marked even when it falls outside the selected month. Such a cell
+  is both secondary and today, so make sure the secondary styling does not wash out the
+  today marker, and that the cell's label still says it is today. With
+  `AS_OF=2026-10-21` this never occurs. To see it, run with `AS_OF=2026-10-02` and open
+  `2026-09`, whose grid runs to `2026-10-03`.
 
 **Decided:** every cell shows both indicators, including `FUTURE`, `NO_ACTIVITY` and
 `WAITING_TO_SYNC` days. This differs from the wireframe, which the README says is
