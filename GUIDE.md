@@ -25,7 +25,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | `wear` and `sync` on `FUTURE` days | Hours `0` and count `0` |
 | `month` parameter missing | `400` |
 | Error body | `{"error": "message"}`: one `error` field holding a readable message |
-| Empty state | A participant with no records, detected on the frontend as a grid with no activity. No change to the API |
+| Empty state | A participant with no records, detected on the frontend as a grid with no activity. Its message appears alongside the grid. No change to the API |
 | `month` format | Exactly `YYYY-MM`: four digits, a hyphen, two digits from `01` to `12`. Anything else returns `400` |
 | `AS_OF` set but not a valid date | The server refuses to start |
 | The frontend's date is not a valid date | The page shows an error screen |
@@ -77,19 +77,15 @@ a year boundary (`2026-11-29` to `2027-01-02`).
 None of these block starting. Decide each when you reach the step named, and write the
 answer in `NOTES.md`.
 
-1. **How the empty state is presented.** You decided the page treats a grid with no
-   activity as the empty state. Whether its message replaces the grid or appears alongside
-   it is not decided. Showing the grid as well keeps the month navigation in view and
-   keeps the README's requirement that each day cell is shown. (Step 12)
-2. **A month after today in the URL.** Next is disabled once the displayed month contains
+1. **A month after today in the URL.** Next is disabled once the displayed month contains
    today, but someone can still type a later month into the address bar. The spec does not
    say what the page does then. A grid that is entirely `FUTURE` also has no activity, so
    decide whether the empty state applies to it. (Step 10)
-3. **The default month.** When the URL names no month, which one shows? The month containing
+2. **The default month.** When the URL names no month, which one shows? The month containing
    today is the obvious candidate; the spec does not say. (Step 10)
-4. **Today outside the selected month.** If today falls in the leading or trailing days of
+3. **Today outside the selected month.** If today falls in the leading or trailing days of
     the grid, is it still marked? (Step 11)
-5. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
+4. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
     residue, not part of the spec. Whether you remove it is up to you.
 
 ## Part 1: Backend
@@ -303,7 +299,7 @@ and the month from the query string on every render, and change month by navigat
 you also keep the month in component state, the two will disagree after a refresh or a
 back-button press.
 
-Resolve open questions 2 and 3. Also decide what the page does when the month in the URL is
+Resolve open questions 1 and 2. Also decide what the page does when the month in the URL is
 not a valid month: the server will answer `400`, and you can catch it earlier on the
 client.
 
@@ -328,7 +324,7 @@ Useful to know:
   midnight and then displays it in the local zone, which shows the previous day in any zone
   west of UTC. Take the day number from the string instead. The same care applies when you
   work out the month name for the heading and the previous and next months.
-- Today is the cell whose date equals the value from step 9. Resolve open question 4.
+- Today is the cell whose date equals the value from step 9. Resolve open question 3.
 
 **Decided:** every cell shows both indicators, including `FUTURE`, `NO_ACTIVITY` and
 `WAITING_TO_SYNC` days. This differs from the wireframe, which the README says is
@@ -371,7 +367,8 @@ blank area. Whichever you choose, the month heading should already name the new 
 
 **Decided:** the empty state is a participant with no records, and the page detects it as
 a grid with no activity: no day in the response has wear hours or a sync count above
-zero. The API is unchanged. Three things to settle as you build it:
+zero. The API is unchanged. The empty message appears alongside the grid: the grid, the
+legend and the month navigation all stay on screen. Things to settle as you build it:
 
 - Test the numbers, or test that every state is `NO_ACTIVITY` or `FUTURE`. With the rules
   as written the two agree; pick one and put it in a small pure function with its own
@@ -381,9 +378,12 @@ zero. The API is unchanged. Three things to settle as you build it:
 - The message cannot honestly say the participant has no records at all, because `A1001`
   in `2026-08` triggers it too. Word it about the period shown, and record the limitation
   in `NOTES.md`.
+- Where the message sits relative to the grid, and whether a screen reader hears it. It
+  appears after a month change with no focus move, so it needs the same kind of
+  announcement as the month heading in step 13.
 
 Check with `A1000` in `2026-10` and `A1001` in `2026-08` (both empty), and `A1001` in
-`2026-10` (not empty). Resolve open question 1.
+`2026-10` (not empty).
 
 ### Step 13 — Navigation and accessibility
 
