@@ -1,0 +1,1880 @@
+[
+ {
+  "participantId": "A1001",
+  "date": "2026-09-28",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-09-29",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-09-30",
+  "wearHours": 12.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-01",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-02",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-03",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-04",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-05",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-06",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-07",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-08",
+  "wearHours": 11.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-09",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-11",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-12",
+  "wearHours": 10.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-13",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-14",
+  "wearHours": 10.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-15",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-16",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-17",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1001",
+  "date": "2026-10-21",
+  "wearHours": 6.5,
+  "syncCount": 0
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-05",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-06",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-07",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-08",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-09",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-10",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-11",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-12",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-13",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-14",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-15",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-16",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-17",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-18",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-21",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-22",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-23",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-24",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-25",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-26",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-27",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-28",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-29",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-09-30",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-01",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-02",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-03",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-04",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-05",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-06",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-07",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-08",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-09",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-10",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-11",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-12",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-13",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-14",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-15",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-16",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-17",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-18",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1002",
+  "date": "2026-10-21",
+  "wearHours": 4.0,
+  "syncCount": 0
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-21",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-22",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-23",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-24",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-25",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-26",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-27",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-28",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-29",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-09-30",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-01",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-02",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-03",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-04",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-05",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-06",
+  "wearHours": 14.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-07",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-08",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-09",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-10",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-11",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-12",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-13",
+  "wearHours": 14.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-14",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-15",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-16",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-17",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-18",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1003",
+  "date": "2026-10-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-21",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-22",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-23",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-24",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-25",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-26",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-27",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-28",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-29",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-09-30",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-01",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-02",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-03",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-04",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-05",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-06",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-07",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-08",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-09",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-10",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-11",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-12",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-15",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-16",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-17",
+  "wearHours": 8.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1004",
+  "date": "2026-10-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1006",
+  "date": "2026-10-14",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1006",
+  "date": "2026-10-15",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1006",
+  "date": "2026-10-16",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1006",
+  "date": "2026-10-17",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1006",
+  "date": "2026-10-18",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1006",
+  "date": "2026-10-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1006",
+  "date": "2026-10-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1006",
+  "date": "2026-10-21",
+  "wearHours": 3.0,
+  "syncCount": 0
+ },
+ {
+  "participantId": "A1007",
+  "date": "2026-10-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1007",
+  "date": "2026-10-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1007",
+  "date": "2026-10-21",
+  "wearHours": 5.0,
+  "syncCount": 0
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-13",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-14",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-15",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-16",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-17",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-18",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-21",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-22",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-23",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-24",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-25",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-26",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-27",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-28",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-29",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-09-30",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-01",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-02",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-03",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-04",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-05",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-06",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-07",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-08",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-09",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-10",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-11",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-12",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-13",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1008",
+  "date": "2026-10-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-20",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-21",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-22",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-23",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-24",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-25",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-26",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-27",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-28",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-29",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-09-30",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-01",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-02",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-03",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-04",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-05",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-06",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-07",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-08",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-09",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-10",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-11",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-12",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-13",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-14",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-15",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-16",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-17",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-18",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-19",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-20",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1009",
+  "date": "2026-10-21",
+  "wearHours": 0.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-21",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-22",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-23",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-24",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-25",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-26",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-27",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-28",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-29",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-09-30",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-01",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-02",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-03",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-04",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-05",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-06",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-07",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-08",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-09",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-10",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-11",
+  "wearHours": 16.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-12",
+  "wearHours": 16.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-13",
+  "wearHours": 16.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-14",
+  "wearHours": 16.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-15",
+  "wearHours": 16.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-16",
+  "wearHours": 16.0,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-17",
+  "wearHours": 15.9,
+  "syncCount": 1
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-18",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1010",
+  "date": "2026-10-21",
+  "wearHours": 2.0,
+  "syncCount": 0
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-05",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-06",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-07",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-08",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-09",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-10",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-11",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-12",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-13",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-14",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-15",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-16",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-17",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-18",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-19",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-20",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-21",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-22",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-23",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-24",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-25",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-26",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-27",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-28",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-29",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-09-30",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-01",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-02",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-03",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-04",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-05",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-06",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-07",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-08",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-09",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-10",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-11",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-12",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-13",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-14",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-15",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-16",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-17",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-18",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-19",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-20",
+  "wearHours": 24.0,
+  "syncCount": 5
+ },
+ {
+  "participantId": "A1011",
+  "date": "2026-10-21",
+  "wearHours": 10.0,
+  "syncCount": 0
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-05",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-06",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-07",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-08",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-09",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-10",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-11",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-12",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-13",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-14",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-15",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-16",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-17",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-18",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-19",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-20",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-21",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-22",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-23",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-24",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-25",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-26",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-27",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-28",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-29",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-09-30",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-10-01",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-10-02",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-10-03",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-10-04",
+  "wearHours": 18.0,
+  "syncCount": 2
+ },
+ {
+  "participantId": "A1012",
+  "date": "2026-10-05",
+  "wearHours": 18.0,
+  "syncCount": 2
+ }
+]

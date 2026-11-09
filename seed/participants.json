@@ -1,0 +1,86 @@
+[
+  {
+    "participantId": "A1000",
+    "deviceId": "watch-x8.QX7M429TSLN",
+    "site": "Site 1",
+    "enrolledOn": "2026-09-20"
+  },
+  {
+    "participantId": "A1001",
+    "deviceId": "watch-x8.QX7M42RJ2KR",
+    "site": "Site 1",
+    "enrolledOn": "2026-09-20"
+  },
+  {
+    "participantId": "A1002",
+    "deviceId": "watch-x8.ZP3104KMVA",
+    "site": "Site 1",
+    "enrolledOn": "2026-09-01"
+  },
+  {
+    "participantId": "A1003",
+    "deviceId": "watch-x8.ZP3105WQDE",
+    "site": "Site 1",
+    "enrolledOn": "2026-09-01"
+  },
+  {
+    "participantId": "A1004",
+    "deviceId": "watch-x8.ZP3106HTBN",
+    "site": "Site 2",
+    "enrolledOn": "2026-09-15"
+  },
+  {
+    "participantId": "A1005",
+    "deviceId": null,
+    "site": "Site 2",
+    "enrolledOn": "2026-09-15"
+  },
+  {
+    "participantId": "A1006",
+    "deviceId": "watch-x8.ZP3108CLRU",
+    "site": "Site 2",
+    "enrolledOn": "2026-09-15"
+  },
+  {
+    "participantId": "A1007",
+    "deviceId": "watch-x8.ZP3109YFOS",
+    "site": "Site 3",
+    "enrolledOn": "2026-10-19"
+  },
+  {
+    "participantId": "A1008",
+    "deviceId": "watch-x8.ZP3110GXJT",
+    "site": "Site 3",
+    "enrolledOn": "2026-09-10"
+  },
+  {
+    "participantId": "A1009",
+    "deviceId": "watch-x8.ZP3111NMAB",
+    "site": "Site 3",
+    "enrolledOn": "2026-09-10"
+  },
+  {
+    "participantId": "A1010",
+    "deviceId": "watch-x8.ZP3112PQWL",
+    "site": "Site 1",
+    "enrolledOn": "2026-09-10"
+  },
+  {
+    "participantId": "A1011",
+    "deviceId": "watch-x8.ZP3113VDEK",
+    "site": "Site 2",
+    "enrolledOn": "2026-09-01"
+  },
+  {
+    "participantId": "A1012",
+    "deviceId": "watch-x8.ZP3114SRHC",
+    "site": "Site 3",
+    "enrolledOn": "2026-09-01"
+  },
+  {
+    "participantId": "A1013",
+    "deviceId": null,
+    "site": "Site 1",
+    "enrolledOn": "2026-10-20"
+  }
+]
