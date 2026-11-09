@@ -21,6 +21,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | Study segment of the URL | A path parameter. Only `alpha` exists; any other study returns `404` |
 | Wear and sync indicators | Follow the README literally: every day cell shows both, including `FUTURE`, `NO_ACTIVITY` and `WAITING_TO_SYNC` days |
 | How the frontend knows "today" | From its own environment variable carrying the same `AS_OF` date. The API response stays exactly as the contract shows it |
+| Server port | `8080` |
 | `AS_OF` set but not a valid date | The server refuses to start |
 | The frontend's date is not a valid date | The page shows an error screen |
 | `AS_OF` not provided | Default to `2026-10-21`, the seed reference date, on both the server and the frontend |
@@ -71,28 +72,26 @@ a year boundary (`2026-11-29` to `2027-01-02`).
 None of these block starting. Decide each when you reach the step named, and write the
 answer in `NOTES.md`.
 
-1. **Server port.** The README says a script will run against your server and does not say
-   which port. Pick one, make it configurable, and document it. (Step 6)
-2. **The `wear` and `sync` values on `FUTURE` days.** The contract does not say. The seed has
+1. **The `wear` and `sync` values on `FUTURE` days.** The contract does not say. The seed has
    no future records, so with this data they come out as zero and `false`; what you would do
    if a future record did exist is unspecified. (Step 4)
-3. **`month` missing altogether.** "Anything else returns `400`" most naturally covers a
+2. **`month` missing altogether.** "Anything else returns `400`" most naturally covers a
    missing parameter, but the spec does not name that case. (Step 5)
-4. **How strict `month` is.** `2026-13`, `2026-1` and `26-10` are all "anything else".
+3. **How strict `month` is.** `2026-13`, `2026-1` and `26-10` are all "anything else".
    Whether a year far in the past or future is acceptable is not stated. (Step 5)
-5. **The shape of the error body.** The spec asks for a "consistent JSON error body" and
+4. **The shape of the error body.** The spec asks for a "consistent JSON error body" and
    does not define one. (Step 5)
-6. **What "empty state" means.** The spec lists loading, empty and error states. The API
+5. **What "empty state" means.** The spec lists loading, empty and error states. The API
    always returns a full grid, so there is never an empty list. A participant with no
    records, or a month where every day is `NO_ACTIVITY`, is the nearest thing. (Step 12)
-7. **A month after today in the URL.** Next is disabled once the displayed month contains
+6. **A month after today in the URL.** Next is disabled once the displayed month contains
    today, but someone can still type a later month into the address bar. The spec does not
    say what the page does then. (Step 10)
-8. **The default month.** When the URL names no month, which one shows? The month containing
+7. **The default month.** When the URL names no month, which one shows? The month containing
    today is the obvious candidate; the spec does not say. (Step 10)
-9. **Today outside the selected month.** If today falls in the leading or trailing days of
+8. **Today outside the selected month.** If today falls in the leading or trailing days of
     the grid, is it still marked? (Step 11)
-10. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
+9. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
     residue, not part of the spec. Whether you remove it is up to you.
 
 ## Part 1: Backend
@@ -173,7 +172,7 @@ Reading from disk and embedding the files in the binary are both allowed. Embedd
 removes any dependence on the working directory the server is started from, which matters
 when someone else's script starts it.
 
-Decide open question 2 here. Then write the function that joins the three pieces: for a
+Decide open question 1 here. Then write the function that joins the three pieces: for a
 participant and a month, produce the grid from step 3, look up each date, and apply the
 functions from step 2.
 
@@ -197,7 +196,7 @@ Things to get right:
 - Set the JSON content type on every response, errors included.
 - Validate in a deliberate order and decide what happens when two things are wrong at once
   (an unknown participant and a bad month).
-- Resolve open questions 3, 4 and 5. Write one helper that produces the error body so that
+- Resolve open questions 2, 3 and 4. Write one helper that produces the error body so that
   every failure uses it.
 - Consider what a request with the wrong method, or to a path that matches nothing,
   returns. The default responses from the standard router are plain text, not your JSON
@@ -222,7 +221,9 @@ rejected value. A date that has the right shape but does not exist, such as `202
 is invalid too, so check that your parsing rejects it. Keep the parsing in a function you
 can unit test for the three cases: absent, valid and invalid.
 
-Resolve open question 1.
+**Decided:** the server listens on port `8080`. The README does not name a port for the
+grading script, so state `8080` in `NOTES.md` where a grader will see it. Whether the port
+can also be overridden is up to you; nothing in the spec asks for it.
 
 Check with the server running: request the contract URL and compare the first day with the
 example in the README (`2026-09-27`, `NO_ACTIVITY`, zeros and `false`). Then try a bad
@@ -245,7 +246,7 @@ Create the Vite React TypeScript app in the frontend directory and add React Rou
 Remove the template's demo content.
 
 The browser app and the Go server run on different ports during development. Vite's dev
-server can proxy `/api` to the Go server, which keeps the frontend's request URLs relative
+server can proxy `/api` to the Go server on port `8080`, which keeps the frontend's request URLs relative
 and avoids CORS configuration on the Go side.
 
 ### Step 9 — Types and the API client
@@ -281,7 +282,7 @@ and the month from the query string on every render, and change month by navigat
 you also keep the month in component state, the two will disagree after a refresh or a
 back-button press.
 
-Resolve open questions 7 and 8. Also decide what the page does when the month in the URL is
+Resolve open questions 6 and 7. Also decide what the page does when the month in the URL is
 not a valid month: the server will answer `400`, and you can catch it earlier on the
 client.
 
@@ -306,7 +307,7 @@ Useful to know:
   midnight and then displays it in the local zone, which shows the previous day in any zone
   west of UTC. Take the day number from the string instead. The same care applies when you
   work out the month name for the heading and the previous and next months.
-- Today is the cell whose date equals the value from step 9. Resolve open question 9.
+- Today is the cell whose date equals the value from step 9. Resolve open question 8.
 
 **Decided:** every cell shows both indicators, including `FUTURE`, `NO_ACTIVITY` and
 `WAITING_TO_SYNC` days. This differs from the wireframe, which the README says is
@@ -347,7 +348,7 @@ another, click through quickly, and watch what settles. Remove the delay afterwa
 Also decide what shows while a new month loads: the previous grid dimmed, a skeleton, or a
 blank area. Whichever you choose, the month heading should already name the new month.
 
-Resolve open question 6.
+Resolve open question 5.
 
 ### Step 13 — Navigation and accessibility
 
