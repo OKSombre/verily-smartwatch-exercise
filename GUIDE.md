@@ -8,12 +8,15 @@ Three kinds of statement appear below, and they are marked so you can tell them 
 
 - **Spec** — taken directly from `README.md` or `seed/README.md`.
 - **Decided** — something the spec leaves open that you answered when asked.
-- **Open** — something the spec leaves open that is still yours to decide. Each one is a
-  candidate for the "ambiguous" section of `NOTES.md`.
+- **Open** — something the spec leaves open that is still yours to decide. None remain
+  at the time of writing.
 
 Anything not marked is a suggestion about order or technique, not a requirement.
 
 ## Decisions already made
+
+Each row is a gap or inconsistency in the spec and how you resolved it. Together they are
+your list for the "ambiguous" section of `NOTES.md`.
 
 | Topic | Decision |
 |---|---|
@@ -75,12 +78,10 @@ Grid sizes for the three cases the spec names: February 2026 is 28 days (`02-01`
 `02-28`), October 2026 is 35, August 2026 is 42 (`07-26` to `09-05`). December 2026 crosses
 a year boundary (`2026-11-29` to `2027-01-02`).
 
-## Open questions for you
+## Open questions
 
-One item is left. It does not block starting.
-
-1. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
-    residue, not part of the spec. Whether you remove it is up to you.
+None. Every gap found in the spec has a decision in the table above. If you meet a new one
+while building, add it to the table and to `NOTES.md`.
 
 ## Part 1: Backend
 
@@ -88,7 +89,8 @@ One item is left. It does not block starting.
 
 Create a Go module at the repository root and decide where the frontend lives (a
 subdirectory is the usual choice). Add a `.gitignore` covering build output and
-`node_modules`.
+`node_modules`. The `__MACOSX/` folder that came with the exercise archive has been removed on
+this branch; ignoring that name keeps it from returning if you unpack the archive again.
 
 **Spec:** the day-state rules live in their own package. Plan for at least three separate
 concerns on the Go side: the state rules, the calendar grid, and the HTTP layer with seed
