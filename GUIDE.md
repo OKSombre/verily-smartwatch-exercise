@@ -26,6 +26,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | `month` parameter missing | `400` |
 | Error body | `{"error": "message"}`: one `error` field holding a readable message |
 | Empty state | A participant with no records, detected on the frontend as a grid with no activity. Its message appears alongside the grid. No change to the API |
+| No month in the page URL | The page shows the month containing today |
 | A month after today in the page URL | The page redirects to the month containing today |
 | `month` format | Exactly `YYYY-MM`: four digits, a hyphen, two digits from `01` to `12`. Anything else returns `400` |
 | `AS_OF` set but not a valid date | The server refuses to start |
@@ -78,11 +79,9 @@ a year boundary (`2026-11-29` to `2027-01-02`).
 None of these block starting. Decide each when you reach the step named, and write the
 answer in `NOTES.md`.
 
-1. **The default month.** When the URL names no month, which one shows? The month containing
-   today is the obvious candidate; the spec does not say. (Step 10)
-2. **Today outside the selected month.** If today falls in the leading or trailing days of
+1. **Today outside the selected month.** If today falls in the leading or trailing days of
     the grid, is it still marked? (Step 11)
-3. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
+2. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
     residue, not part of the spec. Whether you remove it is up to you.
 
 ## Part 1: Backend
@@ -310,7 +309,14 @@ redirects to the month containing today. Points to get right:
 - A grid that is entirely `FUTURE` can therefore never be displayed, which settles whether
   the empty state in step 12 applies to one.
 
-Resolve open question 1. Also decide what the page does when the month in the URL is
+**Decided:** when the page URL names no month, the page shows the month containing today.
+"Today" is the value from step 9, never the browser's clock. This is separate from the
+API, where a missing `month` returns `400`: the page must always send one.
+
+One detail is yours to settle while building: the page can show the default month with
+the URL left as it is, or it can rewrite the URL to include the month. Either satisfies
+the refresh requirement, because the default is stable. If you rewrite the URL, replace
+the history entry for the same reason as the redirect above. Also decide what the page does when the month in the URL is
 not a valid month: the server will answer `400`, and you can catch it earlier on the
 client.
 
@@ -335,7 +341,7 @@ Useful to know:
   midnight and then displays it in the local zone, which shows the previous day in any zone
   west of UTC. Take the day number from the string instead. The same care applies when you
   work out the month name for the heading and the previous and next months.
-- Today is the cell whose date equals the value from step 9. Resolve open question 2.
+- Today is the cell whose date equals the value from step 9. Resolve open question 1.
 
 **Decided:** every cell shows both indicators, including `FUTURE`, `NO_ACTIVITY` and
 `WAITING_TO_SYNC` days. This differs from the wireframe, which the README says is
