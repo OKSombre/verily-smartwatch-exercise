@@ -461,7 +461,7 @@ used AI tools, say how, and be ready to explain any part of the code.
 
 Write this yourself and in your own words. Material you already have:
 
-- The decisions table and the open questions in this guide are your ambiguity list.
+- The decisions table in this guide is your ambiguity list.
 - What you cut: the spec asks you to say what and why.
 - For the AI section, the accurate account of this session is: you asked an AI assistant
   to read the two READMEs and produce a step-by-step guide with no code; it asked you four
