@@ -25,6 +25,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | `wear` and `sync` on `FUTURE` days | Hours `0` and count `0` |
 | `month` parameter missing | `400` |
 | Error body | `{"error": "message"}`: one `error` field holding a readable message |
+| Empty state | A participant with no records |
 | `month` format | Exactly `YYYY-MM`: four digits, a hyphen, two digits from `01` to `12`. Anything else returns `400` |
 | `AS_OF` set but not a valid date | The server refuses to start |
 | The frontend's date is not a valid date | The page shows an error screen |
@@ -76,9 +77,15 @@ a year boundary (`2026-11-29` to `2027-01-02`).
 None of these block starting. Decide each when you reach the step named, and write the
 answer in `NOTES.md`.
 
-1. **What "empty state" means.** The spec lists loading, empty and error states. The API
-   always returns a full grid, so there is never an empty list. A participant with no
-   records, or a month where every day is `NO_ACTIVITY`, is the nearest thing. (Step 12)
+1. **How the frontend detects the empty state.** You decided the empty state is a
+   participant with no records (`A1000`, `A1005` and `A1013` in the seed). The contract
+   response covers one month's grid and has nothing that says whether the participant has
+   records in other months. `A1001` in `2026-08` and `A1000` in `2026-10` look alike from
+   the frontend: no day with any wear or sync. So the page can only tell "no records in the
+   displayed grid" unless the server says more. The choices are to treat a grid with no
+   activity as the empty state, or to have the server report it, which means an addition
+   to the contract response or a second endpoint. Also undecided: whether the empty state
+   replaces the grid or appears alongside it. (Step 12)
 2. **A month after today in the URL.** Next is disabled once the displayed month contains
    today, but someone can still type a later month into the address bar. The spec does not
    say what the page does then. (Step 10)
@@ -366,7 +373,9 @@ another, click through quickly, and watch what settles. Remove the delay afterwa
 Also decide what shows while a new month loads: the previous grid dimmed, a skeleton, or a
 blank area. Whichever you choose, the month heading should already name the new month.
 
-Resolve open question 1.
+**Decided:** the empty state is a participant with no records. Resolve open question 1,
+which covers how the page finds that out, before you build it. Use `A1000` to see it and
+`A1001` in `2026-08` to see the case it must be told apart from.
 
 ### Step 13 — Navigation and accessibility
 
