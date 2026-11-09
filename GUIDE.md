@@ -21,7 +21,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | Study segment of the URL | A path parameter. Only `alpha` exists; any other study returns `404` |
 | Wear and sync indicators | Follow the README literally: every day cell shows both, including `FUTURE`, `NO_ACTIVITY` and `WAITING_TO_SYNC` days |
 | How the frontend knows "today" | From its own environment variable carrying the same `AS_OF` date. The API response stays exactly as the contract shows it |
-| `AS_OF` not provided | There is a default; the server and the frontend do not refuse to start |
+| `AS_OF` not provided | Default to `2026-10-21`, the seed reference date, on both the server and the frontend |
 
 Two consequences of the "today" decision to keep in mind. Vite only exposes variables
 whose names start with `VITE_` to browser code, so `make dev` has to hand the one `AS_OF`
@@ -71,14 +71,10 @@ answer in `NOTES.md`.
 
 1. **Server port.** The README says a script will run against your server and does not say
    which port. Pick one, make it configurable, and document it. (Step 6)
-2. **The default `AS_OF`, and a malformed one.** You decided there is a default when the
-   variable is not provided; which date it is remains open. The two candidates are the seed
-   reference date `2026-10-21` and the system date. `seed/README.md` says the server must
-   take the date "from the `AS_OF` environment variable rather than the system clock", and
-   the seed has no records after `2026-10-21`, so a system-date default would show every
-   seed day as past. Separately, a value that is present but not a valid date is a
-   different case from an absent one: using the default silently would hide a typo. Both
-   points apply to the frontend's variable as well. (Steps 6, 9 and 14)
+2. **A malformed `AS_OF`.** You decided that an absent variable defaults to `2026-10-21`.
+   A value that is present but not a valid date is a different case: using the default
+   silently would hide a typo, and refusing to start would surface it. This applies to the
+   frontend's variable as well. (Steps 6 and 9)
 3. **The `wear` and `sync` values on `FUTURE` days.** The contract does not say. The seed has
    no future records, so with this data they come out as zero and `false`; what you would do
    if a future record did exist is unspecified. (Step 4)
@@ -218,11 +214,11 @@ Read it once at startup and pass it into the handler as a value. Do not read the
 environment or the system clock inside the handler or the state package; that is what
 makes the tests in the next step possible.
 
-**Decided:** when `AS_OF` is not provided, the server uses a default instead of refusing to
-start. Define that default in one place, and log the date in use at startup so that anyone
+**Decided:** when `AS_OF` is not provided, the server uses `2026-10-21` instead of refusing
+to start. Define that default in one place, and log the date in use at startup so that anyone
 running the server can see which "today" it has.
 
-Resolve open question 1 and the remaining parts of open question 2.
+Resolve open questions 1 and 2.
 
 Check with the server running: request the contract URL and compare the first day with the
 example in the README (`2026-09-27`, `NO_ACTIVITY`, zeros and `false`). Then try a bad
@@ -261,9 +257,9 @@ server error).
 Accept an `AbortSignal` in this function now. Step 12 needs it.
 
 **Decided:** "today" comes from an environment variable on the frontend. Read it in one
-place and validate that it looks like a date. When it is not provided, fall back to the
-same default as the server; a different default on each side reintroduces the drift
-described under "Decisions already made".
+place and validate that it looks like a date. When it is not provided, fall back to
+`2026-10-21`, the same default as the server; a different default on each side
+reintroduces the drift described under "Decisions already made".
 
 ### Step 10 — Routing and the month in the URL
 
@@ -375,9 +371,9 @@ everything above is done.
 
 Write a `Makefile` with a `dev` target that starts the Go server and the Vite dev server
 with the same `AS_OF`, and a `test` target. **Decided:** `make dev` works without the
-caller setting `AS_OF`. The Makefile is a natural place to hold the default and pass it to
-both processes, though the server and frontend still need their own for when they are
-started directly.
+caller setting `AS_OF`, using `2026-10-21`. The Makefile is a natural place to hold the
+default and pass it to both processes, though the server and frontend still need their own
+for when they are started directly.
 
 Check from a fresh clone, in a new terminal: install, `make dev`, open the page. This is
 the step most likely to work on your machine only.
