@@ -20,16 +20,15 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | Stack | Go standard library `net/http`; Vite + React + TypeScript; React Router |
 | Study segment of the URL | A path parameter. Only `alpha` exists; any other study returns `404` |
 | Wear and sync indicators | Follow the README literally: every day cell shows both, including `FUTURE`, `NO_ACTIVITY` and `WAITING_TO_SYNC` days |
-| How the frontend knows "today" | From an environment variable, not from the API response |
+| How the frontend knows "today" | From its own environment variable carrying the same `AS_OF` date. The API response stays exactly as the contract shows it |
+| `AS_OF` not provided | There is a default; the server and the frontend do not refuse to start |
 
-One thing to confirm about the last row. I read your answer as: the frontend gets the same
-`AS_OF` date through its own environment variable, and the API response stays exactly as
-the contract shows it. Vite only exposes variables whose names start with `VITE_` to
-browser code, so in practice `make dev` would hand the one `AS_OF` value to both processes.
-The cost of this choice is that the two values can drift: if a grader starts your server
-with one `AS_OF` and the frontend was started or built with another, "today" is marked on
-the wrong day. Starting both from one command with one value is what prevents that. If you
-meant something different, step 9 is the only one that changes.
+Two consequences of the "today" decision to keep in mind. Vite only exposes variables
+whose names start with `VITE_` to browser code, so `make dev` has to hand the one `AS_OF`
+value to both processes under two names. And the two values can drift: if a grader starts
+your server with one `AS_OF` and the frontend was started or built with another, "today" is
+marked on the wrong day. Starting both from one command with one value is what prevents
+that, and it is worth a line in `NOTES.md`.
 
 ## What the seed data contains
 
@@ -72,9 +71,14 @@ answer in `NOTES.md`.
 
 1. **Server port.** The README says a script will run against your server and does not say
    which port. Pick one, make it configurable, and document it. (Step 6)
-2. **Missing or malformed `AS_OF`.** The spec says the server must read it and says nothing
-   about what happens when it is absent or not a date. Refusing to start and falling back to
-   a default are both defensible. (Step 6)
+2. **The default `AS_OF`, and a malformed one.** You decided there is a default when the
+   variable is not provided; which date it is remains open. The two candidates are the seed
+   reference date `2026-10-21` and the system date. `seed/README.md` says the server must
+   take the date "from the `AS_OF` environment variable rather than the system clock", and
+   the seed has no records after `2026-10-21`, so a system-date default would show every
+   seed day as past. Separately, a value that is present but not a valid date is a
+   different case from an absent one: using the default silently would hide a typo. Both
+   points apply to the frontend's variable as well. (Steps 6, 9 and 14)
 3. **The `wear` and `sync` values on `FUTURE` days.** The contract does not say. The seed has
    no future records, so with this data they come out as zero and `false`; what you would do
    if a future record did exist is unspecified. (Step 4)
@@ -214,7 +218,11 @@ Read it once at startup and pass it into the handler as a value. Do not read the
 environment or the system clock inside the handler or the state package; that is what
 makes the tests in the next step possible.
 
-Resolve open questions 1 and 2.
+**Decided:** when `AS_OF` is not provided, the server uses a default instead of refusing to
+start. Define that default in one place, and log the date in use at startup so that anyone
+running the server can see which "today" it has.
+
+Resolve open question 1 and the remaining parts of open question 2.
 
 Check with the server running: request the contract URL and compare the first day with the
 example in the README (`2026-09-27`, `NO_ACTIVITY`, zeros and `false`). Then try a bad
@@ -253,8 +261,9 @@ server error).
 Accept an `AbortSignal` in this function now. Step 12 needs it.
 
 **Decided:** "today" comes from an environment variable on the frontend. Read it in one
-place, validate that it looks like a date, and decide what the app does when it is absent.
-See the note under "Decisions already made" about keeping it equal to the server's value.
+place and validate that it looks like a date. When it is not provided, fall back to the
+same default as the server; a different default on each side reintroduces the drift
+described under "Decisions already made".
 
 ### Step 10 — Routing and the month in the URL
 
@@ -365,8 +374,10 @@ everything above is done.
 **Spec:** `make dev`, or an equivalent documented command, starts everything.
 
 Write a `Makefile` with a `dev` target that starts the Go server and the Vite dev server
-with the same `AS_OF`, and a `test` target. Decide what `AS_OF` is when the caller does not
-set one, in line with open question 2.
+with the same `AS_OF`, and a `test` target. **Decided:** `make dev` works without the
+caller setting `AS_OF`. The Makefile is a natural place to hold the default and pass it to
+both processes, though the server and frontend still need their own for when they are
+started directly.
 
 Check from a fresh clone, in a new terminal: install, `make dev`, open the page. This is
 the step most likely to work on your machine only.
