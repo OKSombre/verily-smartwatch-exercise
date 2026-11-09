@@ -24,6 +24,7 @@ Anything not marked is a suggestion about order or technique, not a requirement.
 | Server port | `8080` |
 | `wear` and `sync` on `FUTURE` days | Hours `0` and count `0` |
 | `month` parameter missing | `400` |
+| Error body | `{"error": "message"}`: one `error` field holding a readable message |
 | `month` format | Exactly `YYYY-MM`: four digits, a hyphen, two digits from `01` to `12`. Anything else returns `400` |
 | `AS_OF` set but not a valid date | The server refuses to start |
 | The frontend's date is not a valid date | The page shows an error screen |
@@ -75,19 +76,17 @@ a year boundary (`2026-11-29` to `2027-01-02`).
 None of these block starting. Decide each when you reach the step named, and write the
 answer in `NOTES.md`.
 
-1. **The shape of the error body.** The spec asks for a "consistent JSON error body" and
-   does not define one. (Step 5)
-2. **What "empty state" means.** The spec lists loading, empty and error states. The API
+1. **What "empty state" means.** The spec lists loading, empty and error states. The API
    always returns a full grid, so there is never an empty list. A participant with no
    records, or a month where every day is `NO_ACTIVITY`, is the nearest thing. (Step 12)
-3. **A month after today in the URL.** Next is disabled once the displayed month contains
+2. **A month after today in the URL.** Next is disabled once the displayed month contains
    today, but someone can still type a later month into the address bar. The spec does not
    say what the page does then. (Step 10)
-4. **The default month.** When the URL names no month, which one shows? The month containing
+3. **The default month.** When the URL names no month, which one shows? The month containing
    today is the obvious candidate; the spec does not say. (Step 10)
-5. **Today outside the selected month.** If today falls in the leading or trailing days of
+4. **Today outside the selected month.** If today falls in the leading or trailing days of
     the grid, is it still marked? (Step 11)
-6. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
+5. **The `__MACOSX/` folder** is committed alongside the exercise files. It is archive
     residue, not part of the spec. Whether you remove it is up to you.
 
 ## Part 1: Backend
@@ -209,11 +208,15 @@ Things to get right:
 - Set the JSON content type on every response, errors included.
 - Validate in a deliberate order and decide what happens when two things are wrong at once
   (an unknown participant and a bad month).
-- Resolve open question 1. Write one helper that produces the error body so that
-  every failure uses it.
+- **Decided:** every failure returns `{"error": "message"}`, a single `error` field
+  holding a readable message. Write one helper that takes a status code and a message and
+  produces it, and send every failure through that helper. Build the body with the JSON
+  encoder, not by joining strings, so a message containing a quote stays valid JSON.
+- Write messages that say what was wrong and what was expected, since the spec asks for
+  clear errors. Think before echoing the caller's input back in a message.
 - Consider what a request with the wrong method, or to a path that matches nothing,
   returns. The default responses from the standard router are plain text, not your JSON
-  error body.
+  error body, and the spec asks for the body to be consistent.
 
 ### Step 6 — Configuration and startup
 
@@ -270,7 +273,9 @@ returns either data or a typed failure.
 
 That function should distinguish three outcomes, because the page shows each differently:
 success, participant not found (`404`), and everything else (network failure, `400`, a
-server error).
+server error). The error body carries only a message, so tell the cases apart by status
+code and never by matching message text. The message is still worth reading from the body
+for display, with a fallback for responses that are not JSON at all.
 
 Accept an `AbortSignal` in this function now. Step 12 needs it.
 
@@ -295,7 +300,7 @@ and the month from the query string on every render, and change month by navigat
 you also keep the month in component state, the two will disagree after a refresh or a
 back-button press.
 
-Resolve open questions 3 and 4. Also decide what the page does when the month in the URL is
+Resolve open questions 2 and 3. Also decide what the page does when the month in the URL is
 not a valid month: the server will answer `400`, and you can catch it earlier on the
 client.
 
@@ -320,7 +325,7 @@ Useful to know:
   midnight and then displays it in the local zone, which shows the previous day in any zone
   west of UTC. Take the day number from the string instead. The same care applies when you
   work out the month name for the heading and the previous and next months.
-- Today is the cell whose date equals the value from step 9. Resolve open question 5.
+- Today is the cell whose date equals the value from step 9. Resolve open question 4.
 
 **Decided:** every cell shows both indicators, including `FUTURE`, `NO_ACTIVITY` and
 `WAITING_TO_SYNC` days. This differs from the wireframe, which the README says is
@@ -361,7 +366,7 @@ another, click through quickly, and watch what settles. Remove the delay afterwa
 Also decide what shows while a new month loads: the previous grid dimmed, a skeleton, or a
 blank area. Whichever you choose, the month heading should already name the new month.
 
-Resolve open question 2.
+Resolve open question 1.
 
 ### Step 13 — Navigation and accessibility
 
