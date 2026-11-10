@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/verily/calendar/internal/utils"
+	"github.com/verily/calendar/api/internal/utils"
 )
 
 //go:embed seed/daily.json
@@ -23,8 +23,9 @@ type Sync struct {
 }
 
 type DailyRecord struct {
-	ParticipantID string `json:"participantId"`
-    Date string `json:"date"`
+	ParticipantID string
+    Date string
+	DayState utils.DayState
     WearHours Wear
     SyncCount Sync
 }
@@ -72,17 +73,12 @@ func ParseDaily(data []byte, asOfDate string) ([]DailyRecord, error) {
 			},
 		}
 
-		if (utils.GetDayState(utils.DayStateParam{
-			Date:      record.Date,
-			AsOf:      asOfDate,
-			WearHours: record.WearHours,
-			SyncCount: record.SyncCount,
-		}) == utils.DayStateFuture) {
+		if utils.GetDayState(utils.DayStateParam{
+			Date:  dailyRecords[i].Date,
+			AsOf:  asOfDate,
+		}) == utils.DayStateFuture {
 			dailyRecords[i].WearHours.Hours = 0
-			dailyRecords[i].WearHours.Met = false
-
 			dailyRecords[i].SyncCount.Count = 0
-			dailyRecords[i].SyncCount.Met = false
 		}
 	}
 	
@@ -122,6 +118,7 @@ func BuildSeedData(asOfDate string) ([]DailyRecord, []Participant, error) {
 func BuildParticipantMonthRecord(
 	daily []DailyRecord,  
 	month string, 
+	asOfDate string,
 	participant Participant,
 	) ParticipantMonthRecord {
 	monthDays, err := utils.ListDays(month)
@@ -134,8 +131,10 @@ func BuildParticipantMonthRecord(
 		recordsByDate[date] = DailyRecord{
 			ParticipantID: participant.ParticipantID,
 			Date:          date,
-			WearHours:     Wear{},
-			SyncCount:     Sync{},
+			DayState: utils.GetDayState(utils.DayStateParam{
+				Date: date,
+				AsOf: asOfDate,
+			}),
 		}
 	}
 	for _, record := range daily {
@@ -146,6 +145,12 @@ func BuildParticipantMonthRecord(
 				r.WearHours.Met = utils.IsWearHoursMet(r.WearHours.Hours)
 				r.SyncCount.Count += record.SyncCount.Count
 				r.SyncCount.Met = utils.IsSyncCountMet(r.SyncCount.Count)
+				r.DayState = utils.GetDayState(utils.DayStateParam{
+					Date:      record.Date,
+					AsOf:      asOfDate,
+					WearHours: r.WearHours.Hours,
+					SyncCount: r.SyncCount.Count,
+				})
 				recordsByDate[record.Date] = r
 			}
 		}
@@ -160,28 +165,14 @@ func BuildParticipantMonthRecord(
 	}
 }
 
-func DaystatesForParticipantMonth(record ParticipantMonthRecord, asOfDate string) string {
+func DaystatesForParticipantMonth(record ParticipantMonthRecord) string {
 	dayStates := make(map[utils.DayState]int)
-	for date, dailyRecord := range record.Records {
-		if _, ok := dayStates[utils.GetDayState(utils.DayStateParam{
-			Date:      date,
-			AsOf:      asOfDate,
-			WearHours: dailyRecord.WearHours.Hours,
-			SyncCount: dailyRecord.SyncCount.Count,
-		})]; !ok {
-			dayStates[utils.GetDayState(utils.DayStateParam{
-				Date:      date,
-				AsOf:      asOfDate,
-				WearHours: dailyRecord.WearHours.Hours,
-				SyncCount: dailyRecord.SyncCount.Count,
-			})] = 0
+	for _, dailyRecord := range record.Records {
+		if _, ok := dayStates[dailyRecord.DayState]; !ok {
+			dayStates[dailyRecord.DayState] = 0
+			
 		}
-		dayStates[utils.GetDayState(utils.DayStateParam{
-			Date:      date,
-			AsOf:      asOfDate,
-			WearHours: dailyRecord.WearHours.Hours,
-			SyncCount: dailyRecord.SyncCount.Count,
-		})]++
+		dayStates[dailyRecord.DayState]++
 	}
 
 	return fmt.Sprintf("MET: %d, UNMET: %d, NO ACTIVITY: %d, WAITING TO SYNC: %d, FUTURE: %d",

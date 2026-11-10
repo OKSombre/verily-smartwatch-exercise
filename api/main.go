@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/verily/calendar/internal/builder"
+	"github.com/verily/calendar/api/internal/builder"
 )
 
 const AsOfDate = "2026-10-21"
@@ -23,7 +23,8 @@ func main() {
 	participantMonthRecord := builder.BuildParticipantMonthRecord(
 		daily,
 		month,
+		AsOfDate,
 		participants[1],
 	)
-	builder.DaystatesForParticipantMonth(participantMonthRecord, AsOfDate)
+	builder.DaystatesForParticipantMonth(participantMonthRecord)
 }

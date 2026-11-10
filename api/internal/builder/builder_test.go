@@ -3,7 +3,7 @@ package builder_test
 import (
 	"testing"
 
-	"github.com/verily/calendar/internal/builder"
+	"github.com/verily/calendar/api/internal/builder"
 )
 
 const AsOfDate = "2026-10-21"
@@ -59,9 +59,10 @@ func TestBuildParticipantMonthRecord(t *testing.T) {
 			record := builder.BuildParticipantMonthRecord(
 				daily, 
 				tt.month,
-				tt.participant, 
+				AsOfDate,
+				tt.participant,
 			)
-			got := builder.DaystatesForParticipantMonth(record, AsOfDate)
+			got := builder.DaystatesForParticipantMonth(record)
 			if got != tt.expect {
 				t.Errorf("DaystatesForParticipantMonth() = %q, want %q", got, tt.expect)
 			}

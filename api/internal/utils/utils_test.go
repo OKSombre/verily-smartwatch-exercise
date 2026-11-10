@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/verily/calendar/internal/utils"
+	"github.com/verily/calendar/api/internal/utils"
 )
 
 func TestGetDayState(t *testing.T) {
