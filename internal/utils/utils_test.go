@@ -1,63 +1,63 @@
-package api_test
+package utils_test
 
 import (
 	"testing"
 	"time"
 
-	"github.com/verily/calendar/api"
+	"github.com/verily/calendar/internal/utils"
 )
 
 func TestGetDayState(t *testing.T) {
 	tests := []struct {
 		name     string
-		param    api.DayStateParam
-		expected api.DayState
+		param    utils.DayStateParam
+		expected utils.DayState
 	}{
 		{
 			name:     "Future",
-			param:    api.DayStateParam{Date: "2024-06-02", AsOf: "2024-06-01", WearHours: 8.5, SyncCount: 3},
-			expected: api.DayStateFuture,
+			param:    utils.DayStateParam{Date: "2024-06-02", AsOf: "2024-06-01", WearHours: 8.5, SyncCount: 3},
+			expected: utils.DayStateFuture,
 		},
 		{
 			name:     "FutureNoData",
-			param:    api.DayStateParam{Date: "2024-06-02", AsOf: "2024-06-01"},
-			expected: api.DayStateFuture,
+			param:    utils.DayStateParam{Date: "2024-06-02", AsOf: "2024-06-01"},
+			expected: utils.DayStateFuture,
 		},
 		{
 			name:     "NoActivity",
-			param:    api.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: 0, SyncCount: 0},
-			expected: api.DayStateNoActivity,
+			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: 0, SyncCount: 0},
+			expected: utils.DayStateNoActivity,
 		},
 		{
 			name:     "WaitingToSync",
-			param:    api.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-01", WearHours: 8.5, SyncCount: 0},
-			expected: api.DayStateWaitingToSync,
+			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-01", WearHours: 8.5, SyncCount: 0},
+			expected: utils.DayStateWaitingToSync,
 		},
 		{
 			name:     "Met",
-			param:    api.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: api.MinWearHours, SyncCount: 1},
-			expected: api.DayStateMet,
+			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: utils.MinWearHours, SyncCount: 1},
+			expected: utils.DayStateMet,
 		},
 		{
 			name:     "UnmetNoSync",
-			param:    api.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: api.MinWearHours, SyncCount: 0},
-			expected: api.DayStateUnmet,
+			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: utils.MinWearHours, SyncCount: 0},
+			expected: utils.DayStateUnmet,
 		},
 		{
 			name:     "UnmetNoWear",
-			param:    api.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: 0, SyncCount: 1},
-			expected: api.DayStateUnmet,
+			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: 0, SyncCount: 1},
+			expected: utils.DayStateUnmet,
 		},
 		{
 			name:     "UnmetNotMinimumWear",
-			param:    api.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: api.MinWearHours - 0.1, SyncCount: 1},
-			expected: api.DayStateUnmet,
+			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: utils.MinWearHours - 0.1, SyncCount: 1},
+			expected: utils.DayStateUnmet,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := api.GetDayState(tt.param)
+			got := utils.GetDayState(tt.param)
 			if got != tt.expected {
 				t.Errorf("GetDayState() = %v, want %v", got, tt.expected)
 			}
@@ -73,19 +73,19 @@ func TestIsWearHoursMet(t *testing.T) {
 	}{
 		{
 			name:      "Met",
-			wearHours: api.MinWearHours,
+			wearHours: utils.MinWearHours,
 			expected:  true,
 		},
 		{
 			name:      "NotMet",
-			wearHours: api.MinWearHours - 0.1,
+			wearHours: utils.MinWearHours - 0.1,
 			expected:  false,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := api.IsWearHoursMet(tt.wearHours)
+			got := utils.IsWearHoursMet(tt.wearHours)
 			if got != tt.expected {
 				t.Errorf("IsWearHoursMet() = %v, want %v", got, tt.expected)
 			}
@@ -113,7 +113,7 @@ func TestIsSyncCountMet(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := api.IsSyncCountMet(tt.syncCount)
+			got := utils.IsSyncCountMet(tt.syncCount)
 			if got != tt.expected {
 				t.Errorf("IsSyncCountMet() = %v, want %v", got, tt.expected)
 			}
@@ -175,7 +175,7 @@ func TestCalendarHelpers(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotFirstSunday, err := api.FirstSunday(tt.date)
+			gotFirstSunday, err := utils.FirstSunday(tt.date)
 			if err != nil {
 				t.Fatalf("FirstSunday() error = %v", err)
 			}
@@ -183,7 +183,7 @@ func TestCalendarHelpers(t *testing.T) {
 				t.Errorf("FirstSunday() = %v, want %v", gotFirstSunday, tt.expectedFirstSunday)
 			}
 
-			gotLastSaturday, err := api.LastSaturday(tt.date)
+			gotLastSaturday, err := utils.LastSaturday(tt.date)
 			if err != nil {
 				t.Fatalf("LastSaturday() error = %v", err)
 			}
@@ -191,7 +191,7 @@ func TestCalendarHelpers(t *testing.T) {
 				t.Errorf("LastSaturday() = %v, want %v", gotLastSaturday, tt.expectedLastSaturday)
 			}
 
-			gotDays, err := api.ListDays(tt.date)
+			gotDays, err := utils.ListDays(tt.date)
 			if err != nil {
 				t.Fatalf("ListDays() error = %v", err)
 			}
