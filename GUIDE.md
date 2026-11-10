@@ -28,6 +28,7 @@ your list for the "ambiguous" section of `NOTES.md`.
 | `wear` and `sync` on `FUTURE` days | Hours `0` and count `0` |
 | `month` parameter missing | `400` |
 | Error body | `{"error": "message"}`: one `error` field holding a readable message |
+| Duplicate participant/date records | Treated as unique; no summing. The last record wins for now. Failing at startup with a message is a finish step, done only if time allows (step 18) |
 | Empty state | A participant with no records, detected on the frontend as a grid with no activity. Its message appears alongside the grid. No change to the API |
 | Today outside the selected month | Still marked as today |
 | No month in the page URL | The page shows the month containing today |
@@ -161,6 +162,11 @@ and zero syncs, so a lookup that misses must return zeros, not an error.
 Reading from disk and embedding the files in the binary are both allowed. Embedding
 removes any dependence on the working directory the server is started from, which matters
 when someone else's script starts it.
+
+**Decided:** each participant and date pair is treated as unique, and records are never
+summed. The spec describes the data as per participant, per day, and the seed has no
+duplicate pairs. If a duplicate did appear, the last record read wins. Replacing that with
+a refusal to start is step 18, for the end and only if time allows.
 
 **Decided:** `FUTURE` days report wear hours of `0` and a sync count of `0`. By the spec's
 own definitions, `met` is then `false` for both. With the seed data this happens anyway,
@@ -463,6 +469,9 @@ Write this yourself and in your own words. Material you already have:
 
 - The decisions table in this guide is your ambiguity list.
 - What you cut: the spec asks you to say what and why.
+- The uniqueness assumption for daily records, and which duplicate behaviour you shipped:
+  last record wins, or refuse to start. If step 18 was not done, it belongs under what you
+  would do next.
 - For the AI section, the accurate account of this session is: you asked an AI assistant
   to read the two READMEs and produce a step-by-step guide with no code; it asked you four
   questions about gaps in the spec and you answered them; it profiled the seed data and
@@ -481,9 +490,28 @@ Write this yourself and in your own words. Material you already have:
 - A fresh clone and `make dev`.
 - Read the commit history as a reviewer would.
 
+### Step 18 — If time allows: refuse to start on duplicate records
+
+Optional. Do it only after everything above is finished and checked.
+
+**Decided:** when the daily data holds two records for the same participant and date, the
+server refuses to start, with a message. Until this step is done, the last record wins.
+
+- Detect it while loading, at the moment a record is about to replace one already stored
+  under the same participant and date.
+- Follow the pattern from the invalid `AS_OF` case in step 6: exit with a non-zero status
+  and a message that names the participant and the date.
+- Have the loader return an error and let `main` decide to exit. A loader that exits by
+  itself cannot be unit tested.
+- Test it with a small constructed input containing one duplicate, and confirm that the
+  real seed files still load.
+- Run the step 17 checks again afterwards, and update `NOTES.md` to say which behaviour
+  shipped.
+
 ## Suggested order if time runs short
 
 The README sets a timebox of one to two days and says a smaller scope done well is
 preferred. Steps 2 to 7 and steps 10 to 13 are where the stated grading criteria sit. The
-participant switcher, frontend tests beyond the pure functions, and visual polish are the
+duplicate-record check in step 18, participant switcher, frontend tests beyond the pure
+functions, and visual polish are the
 things to cut first, and `NOTES.md` is where you say so.
