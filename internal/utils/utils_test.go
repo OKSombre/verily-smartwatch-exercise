@@ -35,12 +35,12 @@ func TestGetDayState(t *testing.T) {
 		},
 		{
 			name:     "Met",
-			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: utils.MinWearHours, SyncCount: 1},
+			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: 16, SyncCount: 1},
 			expected: utils.DayStateMet,
 		},
 		{
 			name:     "UnmetNoSync",
-			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: utils.MinWearHours, SyncCount: 0},
+			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: 16, SyncCount: 0},
 			expected: utils.DayStateUnmet,
 		},
 		{
@@ -50,7 +50,7 @@ func TestGetDayState(t *testing.T) {
 		},
 		{
 			name:     "UnmetNotMinimumWear",
-			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: utils.MinWearHours - 0.1, SyncCount: 1},
+			param:    utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: 15.9, SyncCount: 1},
 			expected: utils.DayStateUnmet,
 		},
 	}
@@ -67,18 +67,18 @@ func TestGetDayState(t *testing.T) {
 
 func TestIsWearHoursMet(t *testing.T) {
 	tests := []struct {
-		name      string
-		wearHours float32
-		expected  bool
+		name      	string
+		wearHours   float32
+		expected  	bool
 	}{
 		{
 			name:      "Met",
-			wearHours: utils.MinWearHours,
+			wearHours:    16,
 			expected:  true,
 		},
 		{
 			name:      "NotMet",
-			wearHours: utils.MinWearHours - 0.1,
+			wearHours:    15.9,
 			expected:  false,
 		},
 	}
@@ -133,42 +133,42 @@ func TestCalendarHelpers(t *testing.T) {
 			name:     "February 2024 (Leap Year)",
 			date:     "2024-02",
 			expectedFirstSunday: time.Date(2024, time.January, 28, 0, 0, 0, 0, time.UTC),
-			expectedLastSaturday: time.Date(2024, time.March, 2, 23, 59, 59, 999999999, time.UTC),
+			expectedLastSaturday: time.Date(2024, time.March, 2, 0, 0, 0, 0, time.UTC),
 			expectedDays: 35,
 		},
 		{
 			name:     "February 2026",
 			date:     "2026-02",
 			expectedFirstSunday: time.Date(2026, time.February, 1, 0, 0, 0, 0, time.UTC),
-			expectedLastSaturday: time.Date(2026, time.February, 28, 23, 59, 59, 999999999, time.UTC),
+			expectedLastSaturday: time.Date(2026, time.February, 28, 0, 0, 0, 0, time.UTC),
 			expectedDays: 28,
 		},
 		{
 			name:     "August 2026",
 			date:     "2026-08",
 			expectedFirstSunday: time.Date(2026, time.July, 26, 0, 0, 0, 0, time.UTC),
-			expectedLastSaturday: time.Date(2026, time.September, 5, 23, 59, 59, 999999999, time.UTC),
+			expectedLastSaturday: time.Date(2026, time.September, 5, 0, 0, 0, 0, time.UTC),
 			expectedDays: 42,
 		},
 		{
 			name:     "October 2026",
 			date:     "2026-10",
 			expectedFirstSunday: time.Date(2026, time.September, 27, 0, 0, 0, 0, time.UTC),
-			expectedLastSaturday: time.Date(2026, time.October, 31, 23, 59, 59, 999999999, time.UTC),
+			expectedLastSaturday: time.Date(2026, time.October, 31, 0, 0, 0, 0, time.UTC),
 			expectedDays: 35,
 		},
 		{
 			name:     "November 2026",
 			date:     "2026-11",
 			expectedFirstSunday: time.Date(2026, time.November, 1, 0, 0, 0, 0, time.UTC),
-			expectedLastSaturday: time.Date(2026, time.December, 5, 23, 59, 59, 999999999, time.UTC),
+			expectedLastSaturday: time.Date(2026, time.December, 5, 0, 0, 0, 0, time.UTC),
 			expectedDays: 35,
 		},
 		{
 			name:     "December 2026",
 			date:     "2026-12",
 			expectedFirstSunday: time.Date(2026, time.November, 29, 0, 0, 0, 0, time.UTC),
-			expectedLastSaturday: time.Date(2027, time.January, 2, 23, 59, 59, 999999999, time.UTC),
+			expectedLastSaturday: time.Date(2027, time.January, 2, 0, 0, 0, 0, time.UTC),
 			expectedDays: 35,
 		},
 	}

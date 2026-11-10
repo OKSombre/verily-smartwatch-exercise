@@ -1,11 +1,20 @@
 # Progress Notes on Take-Home Assessment
-These are the notes I've written as I've progressed through this assignment. These contain my thoughts and processes for my coding journey these two day.
+These are the notes I've written as I've progressed through this assignment. These contain my thoughts and processes for my coding journey these two days.
 
 ## Structure and AI Usage
 To create the basic architecture and assure any spec ambiguities were covered, I established a base with Claude code and created a planning guide from start to finish of the project. All code was however created by myself, and I strictly prompted Claude to make no assumptions and clarify any ambiguity through me. The code is then proof-read through Claude for assurance of spec and checking against edge cases or vulnerabilities.
 
 ## Decisions and Trade-offs
-Several changes to address ambiguity and best practices were made in order to ensure best code quality and best completion of spec. The choice to use net/http + Vite + React Router was made due to my own familiarity with the tools. However, the spec required that the AS_OF date be chosen through the environment, so I decided to use make dev include a variable that both the front-end and back-end can use, defaulting to 2026-10-21 if one isn't provided. I also chose to use strings for the back-end handling of dates to avoid anything with timezones or UTC.
+Several changes to address ambiguity and best practices were made in order to ensure best code quality and best completion of spec. 
+
+### API Stack
+The choice to use net/http + Vite + React Router was made due to my own familiarity with the tools. However, the spec required that the AS_OF date be chosen through the environment, so I decided to use make dev include a variable that both the front-end and back-end can use, defaulting to 2026-10-21 if one isn't provided.
+
+### Handling of Dates
+I decided to use time.Time for the go back-end for sake of familiarity with the package as well as quick handling of date math. The trade-off is since this has to be agnostic of time zones, I need to ensure that every value uses UTC and that at no point the code uses local time zone data for calculations. This won't be an issue as the seed data only contains dates and not time.
+
+### Embedding Files vs Reading from Disk
+When loading the seed data, I chose to embed the files rather than read directly through the disk. In my opinion this would be better since the data is relatively simple and has no need for changes. The only downside would be the binary size due to large amounts of data, but that wouldn't be an issue here.
 
 ### Other Spec Ambiguity and Clarifications
 | Topic | Decision |

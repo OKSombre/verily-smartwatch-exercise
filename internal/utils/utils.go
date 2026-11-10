@@ -1,9 +1,6 @@
 package utils
 
-import (
-	"fmt"
-	"time"
-)
+import "time"
 
 type DayState int
 
@@ -15,23 +12,17 @@ const (
 	DayStateUnmet
 )
 
-const MinWearHours = 16
-const DateLayout = "2006-01"
+const DateLayout = "2006-01-02"
+const MonthLayout = "2006-01"
 
 type DayStateParam struct {
-	Date      string 	// YYYY-MM format
-	AsOf      string 	// YYYY-MM format
+	Date      string 	// YYYY-MM-DD format
+	AsOf      string 	// YYYY-MM-DD format
 	WearHours float32 	// Total hours the device was worn
 	SyncCount uint 		// Number of times the device was synced
 }
 
-func Hello() {
-    fmt.Println("Hello from API package!")
-}
-
 func GetDayState(param DayStateParam) DayState {
-	fmt.Printf("Date: %s, As Of: %s, Wear Hours: %.2f, Sync Count: %d\n", param.Date, param.AsOf, param.WearHours, param.SyncCount)
-	
 	if param.Date > param.AsOf {
 		return DayStateFuture
 	}
@@ -44,7 +35,7 @@ func GetDayState(param DayStateParam) DayState {
 		return DayStateWaitingToSync
 	}
 
-	if param.WearHours >= MinWearHours && param.SyncCount > 0 {
+	if IsWearHoursMet(param.WearHours) && IsSyncCountMet(param.SyncCount) {
 		return DayStateMet
 	}
 
@@ -56,11 +47,11 @@ func IsWearHoursMet(wearHours float32) bool {
 }
 
 func IsSyncCountMet(syncCount uint) bool {
-	return syncCount > 0
+	return syncCount >= MinSyncCount
 }
 
 func FirstSunday(date string) (time.Time, error) {
-	parsedDate, err := time.Parse(DateLayout, date)
+	parsedDate, err := time.Parse(MonthLayout, date)
 	if err != nil {
 		return time.Time{}, err
 	}
@@ -78,7 +69,7 @@ func FirstSunday(date string) (time.Time, error) {
 }
 
 func LastSaturday(date string) (time.Time, error) {
-	parsedDate, err := time.Parse(DateLayout, date)
+	parsedDate, err := time.Parse(MonthLayout, date)
 	if err != nil {
 		return time.Time{}, err
 	}
@@ -86,7 +77,7 @@ func LastSaturday(date string) (time.Time, error) {
 	lastDayTime := time.Date(
 		parsedDate.Year(), 
 		parsedDate.Month() + 1, 
-		0, 23, 59, 59, 999999999,
+		0, 0, 0, 0, 0,
 		parsedDate.Location(),
 	)
 
@@ -95,7 +86,7 @@ func LastSaturday(date string) (time.Time, error) {
 	return lastDayTime.AddDate(0, 0, daysToAdd), nil
 }
 
-func ListDays(date string) ([]time.Time, error) {
+func ListDays(date string) ([]string, error) {
 	firstSunday, err := FirstSunday(date)
 	if err != nil {
 		return nil, err
@@ -106,10 +97,10 @@ func ListDays(date string) ([]time.Time, error) {
 		return nil, err
 	}
 
-	var days []time.Time
+	var days []string
 	current := firstSunday
 	for !current.After(lastSaturday) {
-		days = append(days, current)
+		days = append(days, current.Format(DateLayout))
 		current = current.AddDate(0, 0, 1)
 	}
 

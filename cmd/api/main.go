@@ -3,12 +3,27 @@ package main
 import (
 	"fmt"
 
-	"github.com/verily/calendar/internal/utils"
+	"github.com/verily/calendar/internal/builder"
 )
 
+const AsOfDate = "2026-10-21"
+
 func main() {
-    utils.Hello()
-    utils.GetDayState(utils.DayStateParam{Date: "2024-06-01", AsOf: "2024-06-02", WearHours: 8.5, SyncCount: 3})
-	fmt.Println(utils.FirstSunday("2026-11"))
-	fmt.Println(utils.LastSaturday("2026-11"))
+    daily, participants, err := builder.BuildSeedData(AsOfDate)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(len(daily))
+	fmt.Println(daily[0])
+
+    fmt.Println(len(participants))
+	fmt.Println(participants[0])
+
+	month := AsOfDate[:7]
+	participantMonthRecord := builder.BuildParticipantMonthRecord(
+		daily,
+		month,
+		participants[1],
+	)
+	builder.DaystatesForParticipantMonth(participantMonthRecord, AsOfDate)
 }
