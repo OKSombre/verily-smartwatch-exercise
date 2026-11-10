@@ -51,6 +51,7 @@ type ParticipantMonthRecord struct {
 	Month string
 }
 
+// ParseDaily parses daily record data from JSON.
 func ParseDaily(data []byte, asOfDate string) ([]DailyRecord, error) {
 	var records []DailyRecordJson
 	err := json.Unmarshal(data, &records)
@@ -63,6 +64,12 @@ func ParseDaily(data []byte, asOfDate string) ([]DailyRecord, error) {
 		dailyRecords[i] = DailyRecord{
 			ParticipantID: record.ParticipantID,
 			Date:          record.Date,
+			DayState: utils.GetDayState(utils.DayStateParam{
+				Date: record.Date,
+				AsOf: asOfDate,
+				WearHours: record.WearHours,
+				SyncCount: record.SyncCount,
+			}),
 			WearHours: Wear{
 				Hours: record.WearHours,
 				Met:   utils.IsWearHoursMet(record.WearHours),
@@ -85,12 +92,14 @@ func ParseDaily(data []byte, asOfDate string) ([]DailyRecord, error) {
 	return dailyRecords, err
 }
 
+// ParseParticipants parses participant data from JSON.
 func ParseParticipants(data []byte) ([]Participant, error) {
 	var participants []Participant
 	err := json.Unmarshal(data, &participants)
 	return participants, err
 }
 
+// BuildSeedData parses the embedded seed data into daily records and participants.
 func BuildSeedData(asOfDate string) ([]DailyRecord, []Participant, error) {
 	dailyData, err := seed.ReadFile("seed/daily.json")
 	if err != nil {
@@ -115,6 +124,7 @@ func BuildSeedData(asOfDate string) ([]DailyRecord, []Participant, error) {
 	return daily, participants, nil
 }
 
+// BuildParticipantMonthRecord builds a participant's monthly record from daily records.
 func BuildParticipantMonthRecord(
 	daily []DailyRecord,  
 	month string, 

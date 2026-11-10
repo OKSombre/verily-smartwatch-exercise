@@ -16,6 +16,9 @@ I decided to use time.Time for the go back-end for sake of familiarity with the 
 ### Embedding Files vs Reading from Disk
 When loading the seed data, I chose to embed the files rather than read directly through the disk. In my opinion this would be better since the data is relatively simple and has no need for changes. The only downside would be the binary size due to large amounts of data, but that wouldn't be an issue here.
 
+### Possibility of Duplicate Daily Entries
+As I was creating the store, I had made the assumption that each daily record was unique in participant and date. That way, I can immediately assume the DayState without further calculations (Ex. Adding together wear hours for multiple entries). Claude confirms that there are no duplicates in the data, but to be sure I plan to add a safeguard for the initial load.
+
 ### Other Spec Ambiguity and Clarifications
 | Topic | Decision |
 |---|---|

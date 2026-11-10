@@ -2,14 +2,14 @@ package utils
 
 import "time"
 
-type DayState int
+type DayState string
 
 const (
-	DayStateFuture DayState = iota
-	DayStateNoActivity
-	DayStateWaitingToSync
-	DayStateMet
-	DayStateUnmet
+	DayStateFuture DayState = "FUTURE"
+	DayStateNoActivity DayState = "NO_ACTIVITY"
+	DayStateWaitingToSync DayState = "WAITING_TO_SYNC"
+	DayStateMet DayState = "MET"
+	DayStateUnmet DayState = "UNMET"
 )
 
 const DateLayout = "2006-01-02"
@@ -22,6 +22,7 @@ type DayStateParam struct {
 	SyncCount uint 		// Number of times the device was synced
 }
 
+// GetDayState returns the state for a given day.
 func GetDayState(param DayStateParam) DayState {
 	if param.Date > param.AsOf {
 		return DayStateFuture
@@ -42,16 +43,19 @@ func GetDayState(param DayStateParam) DayState {
 	return DayStateUnmet
 }
 
+// IsWearHoursMet returns whether the wear hours meet the minimum requirement.
 func IsWearHoursMet(wearHours float32) bool {
 	return wearHours >= MinWearHours
 }
 
+// IsSyncCountMet returns whether the sync count meets the minimum requirement.
 func IsSyncCountMet(syncCount uint) bool {
 	return syncCount >= MinSyncCount
 }
 
-func FirstSunday(date string) (time.Time, error) {
-	parsedDate, err := time.Parse(MonthLayout, date)
+// FirstSunday returns the first Sunday of the month.
+func FirstSunday(month string) (time.Time, error) {
+	parsedDate, err := time.Parse(MonthLayout, month)
 	if err != nil {
 		return time.Time{}, err
 	}
@@ -68,8 +72,9 @@ func FirstSunday(date string) (time.Time, error) {
 	return firstDayTime.AddDate(0, 0, -daysToSubtract), nil
 }
 
-func LastSaturday(date string) (time.Time, error) {
-	parsedDate, err := time.Parse(MonthLayout, date)
+// LastSaturday returns the last Saturday of the month.
+func LastSaturday(month string) (time.Time, error) {
+	parsedDate, err := time.Parse(MonthLayout, month)
 	if err != nil {
 		return time.Time{}, err
 	}
@@ -86,13 +91,14 @@ func LastSaturday(date string) (time.Time, error) {
 	return lastDayTime.AddDate(0, 0, daysToAdd), nil
 }
 
-func ListDays(date string) ([]string, error) {
-	firstSunday, err := FirstSunday(date)
+// ListDays returns all dates from the first Sunday to the last Saturday of the month.
+func ListDays(month string) ([]string, error) {
+	firstSunday, err := FirstSunday(month)
 	if err != nil {
 		return nil, err
 	}
 
-	lastSaturday, err := LastSaturday(date)
+	lastSaturday, err := LastSaturday(month)
 	if err != nil {
 		return nil, err
 	}
