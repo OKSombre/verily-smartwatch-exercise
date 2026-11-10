@@ -2,6 +2,7 @@ package api_test
 
 import (
 	"testing"
+	"time"
 
 	"github.com/verily/calendar/api"
 )
@@ -115,6 +116,87 @@ func TestIsSyncCountMet(t *testing.T) {
 			got := api.IsSyncCountMet(tt.syncCount)
 			if got != tt.expected {
 				t.Errorf("IsSyncCountMet() = %v, want %v", got, tt.expected)
+			}
+		})
+	}
+}
+
+func TestCalendarHelpers(t *testing.T) {
+	tests := []struct {
+		name     string
+		date     string
+		expectedFirstSunday time.Time
+		expectedLastSaturday time.Time
+		expectedDays int
+	}{
+		{
+			name:     "February 2024 (Leap Year)",
+			date:     "2024-02",
+			expectedFirstSunday: time.Date(2024, time.January, 28, 0, 0, 0, 0, time.UTC),
+			expectedLastSaturday: time.Date(2024, time.March, 2, 23, 59, 59, 999999999, time.UTC),
+			expectedDays: 35,
+		},
+		{
+			name:     "February 2026",
+			date:     "2026-02",
+			expectedFirstSunday: time.Date(2026, time.February, 1, 0, 0, 0, 0, time.UTC),
+			expectedLastSaturday: time.Date(2026, time.February, 28, 23, 59, 59, 999999999, time.UTC),
+			expectedDays: 28,
+		},
+		{
+			name:     "August 2026",
+			date:     "2026-08",
+			expectedFirstSunday: time.Date(2026, time.July, 26, 0, 0, 0, 0, time.UTC),
+			expectedLastSaturday: time.Date(2026, time.September, 5, 23, 59, 59, 999999999, time.UTC),
+			expectedDays: 42,
+		},
+		{
+			name:     "October 2026",
+			date:     "2026-10",
+			expectedFirstSunday: time.Date(2026, time.September, 27, 0, 0, 0, 0, time.UTC),
+			expectedLastSaturday: time.Date(2026, time.October, 31, 23, 59, 59, 999999999, time.UTC),
+			expectedDays: 35,
+		},
+		{
+			name:     "November 2026",
+			date:     "2026-11",
+			expectedFirstSunday: time.Date(2026, time.November, 1, 0, 0, 0, 0, time.UTC),
+			expectedLastSaturday: time.Date(2026, time.December, 5, 23, 59, 59, 999999999, time.UTC),
+			expectedDays: 35,
+		},
+		{
+			name:     "December 2026",
+			date:     "2026-12",
+			expectedFirstSunday: time.Date(2026, time.November, 29, 0, 0, 0, 0, time.UTC),
+			expectedLastSaturday: time.Date(2027, time.January, 2, 23, 59, 59, 999999999, time.UTC),
+			expectedDays: 35,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			gotFirstSunday, err := api.FirstSunday(tt.date)
+			if err != nil {
+				t.Fatalf("FirstSunday() error = %v", err)
+			}
+			if !gotFirstSunday.Equal(tt.expectedFirstSunday) {
+				t.Errorf("FirstSunday() = %v, want %v", gotFirstSunday, tt.expectedFirstSunday)
+			}
+
+			gotLastSaturday, err := api.LastSaturday(tt.date)
+			if err != nil {
+				t.Fatalf("LastSaturday() error = %v", err)
+			}
+			if !gotLastSaturday.Equal(tt.expectedLastSaturday) {
+				t.Errorf("LastSaturday() = %v, want %v", gotLastSaturday, tt.expectedLastSaturday)
+			}
+
+			gotDays, err := api.ListDays(tt.date)
+			if err != nil {
+				t.Fatalf("ListDays() error = %v", err)
+			}
+			if len(gotDays) != tt.expectedDays {
+				t.Errorf("ListDays() returned %d days, want %d", len(gotDays), tt.expectedDays)
 			}
 		})
 	}
