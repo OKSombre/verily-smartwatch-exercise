@@ -20,7 +20,7 @@ When loading the seed data, I chose to embed the files rather than read directly
 As I was creating the store, I had made the assumption that each daily record was unique in participant and date. That way, I can immediately assume the DayState without further calculations (Ex. Adding together wear hours for multiple entries). Claude confirms that there are no duplicates in the data, but to be sure I plan to add a safeguard for the initial load.
 
 ### Front-end URL Handling
-While adding the calendar grid to the front-end, I made some decisions on how to handle erroneous url parameters, such as invalid month or unknown participantId. For the invalid month, I decided to handle it as though the month had been set to the asOf month without changing the url. I plan to have the url set to redirect when this occurs. As of now, I also made the participant show no data when the id is unknown. The title header also changes to clearly show there is no participant with that id.
+While adding the calendar grid to the front-end, I made some decisions on how to handle erroneous url parameters, such as invalid month or unknown participantId. For the invalid month, I decided to handle it as though the month had been set to the `AS_OF` month without changing the url. I plan to have the url set to redirect when this occurs. As of now, I also made the participant show no data when the id is unknown. The title header also changes to clearly show there is no participant with that id.
 
 ### Other Spec Ambiguity and Clarifications
 | Topic | Decision |
@@ -38,6 +38,6 @@ While adding the calendar grid to the front-end, I made some decisions on how to
 | No month in the page URL | The page shows the month containing today |
 | A month after today in the page URL | The page redirects to the month containing today |
 | `month` format | Exactly `YYYY-MM`: four digits, a hyphen, two digits from `01` to `12`. Anything else returns `400` |
-| `AS_OF` set but not a valid date | The server refuses to start |
-| The frontend's date is not a valid date | The page shows an error screen |
+| `AS_OF` set but not a valid date | The server uses the default |
+| The frontend's date is not a valid date | The page uses the `AS_OF` |
 | `AS_OF` not provided | Default to `2026-10-21`, the seed reference date, on both the server and the frontend |
