@@ -1,4 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+
 
 const asOf = import.meta.env.VITE_AS_OF
 
@@ -45,10 +47,10 @@ export default function MonthView() {
   }
 
   return (
-    <>
-      <button onClick={() => handleMonthChange(-1)}>Previous Month</button>
-      <button onClick={() => handleMonthChange(1)} disabled={isAsOfMonth}>Next Month</button>
-      <h2>{monthName} {month.getFullYear()}</h2>
-    </>
+    <div className="calendar-month-view">
+      <button aria-label="Previous month" onClick={() => handleMonthChange(-1)}><FaChevronLeft /></button>
+      <button aria-label="Next month" onClick={() => handleMonthChange(1)} disabled={isAsOfMonth}><FaChevronRight /></button>
+      <h2 id="calendar-month">{monthName} {month.getFullYear()}</h2>
+    </div>
   )
 }

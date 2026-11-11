@@ -1,7 +1,6 @@
-import { useSearchParams } from 'react-router-dom'
-
 import { WEEKDAYS } from '../utils/constants'
 import type { DailyRecord } from '../types/api'
+import CalendarCell from './CalendarCell'
 
 export interface CalendarGridProps {
   days: DailyRecord[]
@@ -10,17 +9,18 @@ export interface CalendarGridProps {
 export default function CalendarGrid({ days }: CalendarGridProps) {
 
   return (
-    <div className="calendar-grid">
+    <div className="calendar-grid" role="grid" aria-labelledby='calendar-month'>
       {WEEKDAYS.map((weekday) => (
         <div key={weekday} className="weekday-label">{weekday}</div>
       ))}
       {days.map((day) => (
-        <div 
-          key={day.date} 
-          className={`calendar-cell ${day.state === 'MET' ? 'active-day' : 'empty-cell'} ${day.date === new Date().toISOString().split('T')[0] ? 'today' : ''}`}
-        >
-          {day.date}
-        </div>
+        <CalendarCell
+          key={day.date}
+          date={day.date}
+          dayState={day.state}
+          watchHoursMet={day.wear.met}
+          syncCountMet={day.sync.met}
+        />
       ))}
     </div>
   )

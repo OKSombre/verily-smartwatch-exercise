@@ -1,3 +1,5 @@
+import { FaArrowLeft } from "react-icons/fa"
+
 export interface CalendarHeaderProps {
   participantId: string
   site: string
@@ -6,9 +8,12 @@ export interface CalendarHeaderProps {
 export default function CalendarHeader({ participantId, site }: CalendarHeaderProps) {
 
   return (
-    <>
-      <h1>Participant {participantId}</h1>
-      <h2>Site: {site}</h2>
-    </>
+    <div className="calendar-header">
+      <button aria-label="Back"><FaArrowLeft /></button>
+      <div>
+        <h1>Participant {participantId}</h1>
+        <div>Site: {site}</div>
+      </div>
+    </div>
   )
 }

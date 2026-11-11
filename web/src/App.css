@@ -1,3 +1,22 @@
+.calendar-header {
+  display: flex;
+  text-align: left;
+  padding: 1rem;
+  background-color: #333;
+  gap: 1rem;
+  align-items: center;
+}
+.calendar-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: larger;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+.calendar-header button:hover {
+  background-color: #555;
+}
 .calendar-container {
   max-width: 400px;
   margin: 2rem auto;
@@ -6,35 +25,107 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-.calendar-header {
+.calendar-month-view {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin: 1rem;
+}
+.calendar-month-view button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 1.5rem;
+  font-size: large;
+  border-radius: 50%;
+}
+.calendar-month-view button:hover {
+  background-color: #555;
+}
+.calendar-month-view button:disabled {
+  cursor: default;
+}
+.calendar-legend {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+}
+.calendar-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.icon-with-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-with-badge .badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
 }
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
   text-align: center;
 }
 .weekday-label {
   font-weight: bold;
   padding: 5px 0;
+  border: 1px solid #aaa;
+  background-color: #444;
+  color: white;
 }
 .calendar-cell {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: flex-end;
   padding: 10px 0;
-  border-radius: 4px;
+  height: 6rem;
+  border: 1px solid #aaa;
+  font-size: 0.75rem;
 }
-.active-day {
-  background-color: #f9f9f9;
-  cursor: pointer;
+.met {
+  background-color: #00800055;
 }
-.active-day:hover {
-  background-color: #e2e8f0;
+.unmet {
+  background-color: #ffa50055;
+}
+.calendar-cell-span {
+  padding: 0.5rem;
+  width: 7%;
+  height: 7%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.active-month {
+  color: white;
+}
+.other-month {
+  color: #999;
 }
 .today {
-  background-color: #3b82f6;
+  background-color: green;
   color: white;
   font-weight: bold;
 }
+.calendar-cell-info {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 2.5rem;
+}
+.day-state-status {
+  background-color: #333;
+  border-radius: 10%;
+  padding: 0.25rem 0.5rem;
+}
+
