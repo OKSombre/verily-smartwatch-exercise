@@ -11,7 +11,7 @@ Several changes to address ambiguity and best practices were made in order to en
 The choice to use net/http + Vite + React Router was made due to my own familiarity with the tools. However, the spec required that the AS_OF date be chosen through the environment, so I decided to use make dev include a variable that both the front-end and back-end can use, defaulting to 2026-10-21 if one isn't provided.
 
 ### Handling of Dates
-I decided to use time.Time for the go back-end for sake of familiarity with the package as well as quick handling of date math. The trade-off is since this has to be agnostic of time zones, I need to ensure that every value uses UTC and that at no point the code uses local time zone data for calculations. This won't be an issue as the seed data only contains dates and not time.
+I decided to use time.Time for the go back-end for sake of familiarity with the package as well as quick handling of date math. The trade-off is since this has to be agnostic of time zones, I need to ensure that every value uses UTC and that at no point the code uses local time zone data for calculations. For comparisons and other calculations, I can simply compare the dates as strings in YYYY-MM-DD format since time isn't a factor for the entries.
 
 ### Embedding Files vs Reading from Disk
 When loading the seed data, I chose to embed the files rather than read directly through the disk. In my opinion this would be better since the data is relatively simple and has no need for changes. The only downside would be the binary size due to large amounts of data, but that wouldn't be an issue here.
