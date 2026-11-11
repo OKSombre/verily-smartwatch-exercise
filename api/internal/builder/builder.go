@@ -85,7 +85,9 @@ func ParseDaily(data []byte, asOfDate string) ([]DailyRecord, error) {
 			AsOf:  asOfDate,
 		}) == utils.DayStateFuture {
 			dailyRecords[i].WearHours.Hours = 0
+			dailyRecords[i].WearHours.Met = false
 			dailyRecords[i].SyncCount.Count = 0
+			dailyRecords[i].SyncCount.Met = false
 		}
 	}
 	
