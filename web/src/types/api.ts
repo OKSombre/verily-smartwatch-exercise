@@ -33,5 +33,5 @@ export interface MonthlyRecord {
   participantId: string;
   site: string;
   month: string;
-  dailyRecords: DailyRecord[];
+  days: DailyRecord[];
 }
