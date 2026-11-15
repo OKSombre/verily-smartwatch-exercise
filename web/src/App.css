@@ -108,13 +108,11 @@
 }
 .active-month {
   color: var(--text-h);
-}
-.other-month {
-  color: #999;
+  font-weight: bold;
 }
 .today {
-  background-color: #00800075;
-  color: var(--text-h);
+  background-color: #00a00075;
+  color: var(--bg);
   font-weight: bold;
 }
 .calendar-cell-info {
@@ -122,11 +120,13 @@
   gap: 0.5rem;
   margin-top: 3rem;
   width: 95%;
+  margin-right: 1px;
 }
 .day-state-status {
   background-color: var(--bg-h);
-  border-radius: 10%;
+  border-radius: 0.25rem;
   width: 100%;
+  color: var(--text-h);
 }
 .visually-hidden {
   position: absolute;

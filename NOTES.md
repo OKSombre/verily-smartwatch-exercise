@@ -41,7 +41,7 @@ These are ambiguities that Claude had discovered and I made decisions for them.
 |---|---|
 | Stack | Go standard library `net/http`; Vite + React + TypeScript; React Router |
 | Study segment of the URL | A path parameter. Only `alpha` exists; any other study returns `404` |
-| Wear and sync indicators | Follow the README literally: every day cell shows both, including `FUTURE`, `NO_ACTIVITY` and `WAITING_TO_SYNC` days |
+| Wear and sync indicators | Follow the Wireframe literally: every day cell shows both, exluding `FUTURE`, `NO_ACTIVITY` and `WAITING_TO_SYNC` days |
 | How the frontend knows "today" | From its own environment variable carrying the same `AS_OF` date. The API response stays exactly as the contract shows it |
 | Server port | `8080` |
 | `wear` and `sync` on `FUTURE` days | Hours `0` and count `0` |

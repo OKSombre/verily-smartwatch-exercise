@@ -93,9 +93,7 @@ export default function CalendarCell({
   
   const spanClassName = () => {
     let className = "calendar-cell-span"
-    if (date.slice(0, 7) !== month) {
-      className += " other-month"
-    } else {
+    if (date.slice(0, 7) === month) {
       className += " active-month"
     }
     if (date === asOf) {
