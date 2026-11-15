@@ -24,7 +24,7 @@ function getDayStateStatus(dayState: DayState) {
       case "WAITING_TO_SYNC":
         return "Waiting to sync"
       case "NO_ACTIVITY":
-        return "No activity"
+        return "No watch activity"
       case "FUTURE":
         return "Future"
       case "MET":
@@ -93,8 +93,6 @@ export default function CalendarCell({
   
   const spanClassName = () => {
     let className = "calendar-cell-span"
-    console.log(date.slice(0, 7))
-    console.log(month)
     if (date.slice(0, 7) !== month) {
       className += " other-month"
     } else {
@@ -122,7 +120,7 @@ export default function CalendarCell({
         watchHoursMet={watchHoursMet}
         syncCountMet={syncCountMet}
       />
-      <span style={{display: "none"}}>{cellAriaLabel()}</span>
+      <span className="visually-hidden">{cellAriaLabel()}</span>
     </div>
   )
 }

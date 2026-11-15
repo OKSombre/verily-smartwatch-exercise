@@ -2,7 +2,7 @@
   display: flex;
   text-align: left;
   padding: 1rem;
-  background-color: #333;
+  background-color: var(--bg-h);
   gap: 1rem;
   align-items: center;
 }
@@ -15,7 +15,7 @@
   border-radius: 50%;
 }
 .calendar-header button:hover {
-  background-color: #555;
+  background-color: var(--code-bg);
 }
 .calendar-container {
   max-width: 400px;
@@ -39,7 +39,7 @@
   border-radius: 50%;
 }
 .calendar-month-view button:hover {
-  background-color: #555;
+  background-color: var(--code-bg);
 }
 .calendar-month-view button:disabled {
   cursor: default;
@@ -78,8 +78,8 @@
   font-weight: bold;
   padding: 5px 0;
   border: 1px solid #aaa;
-  background-color: #444;
-  color: white;
+  background-color: var(--bg-th);
+  color: var(--text-h);
 }
 .calendar-cell {
   display: flex;
@@ -107,25 +107,36 @@
   justify-content: center;
 }
 .active-month {
-  color: white;
+  color: var(--text-h);
 }
 .other-month {
   color: #999;
 }
 .today {
-  background-color: green;
-  color: white;
+  background-color: #00800075;
+  color: var(--text-h);
   font-weight: bold;
 }
 .calendar-cell-info {
   display: flex;
   gap: 0.5rem;
-  padding: 0.5rem;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
+  width: 95%;
 }
 .day-state-status {
-  background-color: #333;
+  background-color: var(--bg-h);
   border-radius: 10%;
-  padding: 0.25rem 0.5rem;
+  width: 100%;
 }
-
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
